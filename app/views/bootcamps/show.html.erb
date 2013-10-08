@@ -20,3 +20,10 @@
 <br/>
 <%= @bootcamp.twitter_handle %>
 <br/>
+
+<div id ="tweetbox">
+<h3>Recent Tweets</h3>
+<% @bootcamp.tweets.limit(5).each do |tweet| %>
+<p class="tweettext"><%= tweet.status %></p>
+<% end %>
+</div>
