@@ -61,3 +61,4 @@ gem 'crowdtilt', github: 'msaint/crowdtilt'
 
 gem 'draper'
 gem 'twitter'
+gem 'acts-as-taggable-on'

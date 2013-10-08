@@ -1,7 +1,11 @@
 class BootcampsController < ApplicationController
 
   def index 
-    @bootcamps=Bootcamp.all
+    if params[:tag]
+      @bootcamps = Bootcamp.tagged_with(params[:tag])
+    else
+      @bootcamps=Bootcamp.all
+    end
   end
 
   def show
@@ -13,6 +17,7 @@ class BootcampsController < ApplicationController
   end
 
   def edit
+    @bootcamp=Bootcamp.find(params[:id])
   end
 
   def update
@@ -20,5 +25,7 @@ class BootcampsController < ApplicationController
 
   def destroy
   end
+
+
 
 end
