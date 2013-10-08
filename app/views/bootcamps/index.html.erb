@@ -117,7 +117,10 @@ $('svg circle').tipsy({
         }
 });
  
-
+$('svg circle').on("click", function() {
+  document.location = "/bootcamps/" + this.id;
+  console.log(this.id);
+});
 
 //make a TOOLTIP 
 var tooltip = d3.select("body")
