@@ -1,15 +1,11 @@
-<h1>Bootcamps Show Page</h1>
 
-<%= link_to("Back to BootCamp Directory", bootcamps_url) %>
-<br />
-<br /> 
-<%= link_to("Home", root_path)  %>
 
-<br/>
-<% params[:id] %>
-<br/>
-<%= @bootcamp.name %>
-<br/>
+<div class="row">
+<div class="three columns"><img src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %>></div>
+<div class ="five columns">
+<h1><%= @bootcamp.name %></h1>
+</div>
+
 <%= @bootcamp.address %>
 <br/>
 <%= @bootcamp.city %>
@@ -27,3 +23,7 @@
 <p class="tweettext"><%= tweet.status %></p>
 <% end %>
 </div>
+<%= link_to("Back to BootCamp Directory", bootcamps_url) %>
+<br />
+<br /> 
+<%= link_to("Home", root_path)  %>
