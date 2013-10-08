@@ -35,14 +35,14 @@ class BootcampsController < ApplicationController
     if @bootcamp.update_attributes(params[:bootcamp])
       flash[:notice] = "Successfully updated bootcamp."
     end
-    respond_with(@bootcamp)
+    redirect_to(@bootcamp)
   end
 
   def destroy
     @bootcamp = Bootcamp.find(params[:id])
     @bootcamp.destroy
       flash[:notice] = "Successfully destroyed bootcamp"
-      respond_with(@bootcamp)
+      redirect_to(@bootcamp)
   end
 
 end

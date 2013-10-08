@@ -1,42 +1,24 @@
+<ul class="bootcamplist">
 <% Bootcamp.all.each do |camp| %>
-<%= link_to("#{camp.name}", camp )  %> ||
+<li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link"><%= link_to("#{camp.name}", camp )  %></li>
 <% end %>
-
-<div id="tag_cloud">
-  <% tag_cloud Bootcamp.tag_counts, %w{s m l} do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
 
 <style>
 
-#tag_cloud {
-  background-color:black;
-  width: 400px;
-  line-height: 1.6em;
-  .s { font-size: 0.8em; }
-  .m { font-size: 1.2em; }
-  .l { font-size: 1.8em; }
-}
-
 path {
-  stroke: black;
+  stroke: teal;
   stroke-width:1px;
-  fill: #a6ee9a;
+  fill: grey;
     }
 
-.tooltip {   
-  color: tomato;
-  position: absolute;           
-  text-align: center;           
-  width: 200px;                  
-  height: 100px;                 
-  padding: 5px;             
-  font: 20px sans-serif;        
-  background: lightsteelblue;   
-  border: 1px dashed white;      
-  border-radius: 8px;
-  opacity: 0.8; 
+#main ul.bootcamplist {
+  float: right;
+  font-size: 1.2em;
+  margin-right: 2%;
+    
+}
+
+.bootcamp-li{border-bottom: 1px solid grey;
 }
 
 </style>
@@ -46,10 +28,14 @@ path {
 
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 <%= javascript_include_tag "jquery.tipsy.js" %>
+<%= javascript_include_tag "jquery.pulse.js" %>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+
+
 <script>
 // set the size of our map
-var width = 1500;
+var width = 800;
     height = 650;
 
 // set up the view of the map
@@ -58,7 +44,7 @@ var width = 1500;
 // Mercator is conservative option 
 var projection = d3.geo.mercator()
     .center([80,40]) // default [0,0], North America [100,30]
-    .scale(500)    // default (150). zoom in w/ > values
+    .scale(700)    // default (150). zoom in w/ > values
     .rotate([-190,0]); // [longitude, latitude, roll], def [0,0,0]
 
 // create svg window
@@ -87,15 +73,13 @@ d3.json("/assets/world.json", function(error, topology) {
 <% @bootcamps.each_with_index do |camp, index| %>
 var lat = (<%= camp.lat %>);
 var lon = (<%= camp.lon %>);
-var imagePath = "<%= image_path(camp.name.downcase.gsub(" ", "-")+'.png') %>"
-var urlImagePath = "url(" + imagePath + ")"
 var coords = projection([lon,lat]);
 
 
 // template for adding cities with Ruby script 
 g.append("circle")
     .attr("class", "logo")
-    .attr("id", "<%= camp.name %>")
+    .attr("id", "<%= camp.name.gsub(" ","-").downcase %>")
     .attr("cx", coords[0])
     .attr("cy", coords[1])
     .attr("r", 10)
@@ -131,59 +115,49 @@ $('svg circle').tipsy({
  
 $('svg circle').on("click", function() {
   document.location = "/bootcamps/" + this.id;
+});
+
+$(".bootcamp-li").on("mouseover", function(){
+  var d = this.id.slice(0,-4);
+  var properties = {
+               "stroke-width" : 5
+            };
+  var bootcamp = $("#"+d);
+  bootcamp.pulse(properties, {pulses:5});
+  // $("#"+d).attr("stroke", "black").attr("stroke-width", 5)
+  // .scale(2);
+});
+
+$(".bootcamplist").on("mouseout", function(){
+  var d = this.id.slice(0,-4);
+  $("#"+d).attr("stroke", "white").attr("stroke-width", .25);
+})
+
+
+
+$('svg circle#Bitmaker Labs').on("mouseover", function() {
   console.log(this.id);
-});
-
-//make a TOOLTIP 
-var tooltip = d3.select("body")
-  .append("div")
-  .attr("class", "tooltip")
-  .style("position", "absolute")
-  .style("z-index", "5")
-  .style("visibility", "hidden")
-  .text("Example of TOOLTIP TEXT HERE");
-
-  
-
-// when mouseover a logo, it should launch tooltip  
-d3.selectAll(".logo")
-  .on("mouseover.tooltip", function(){
-    console.log("mouseover")
-    return tooltip
-    .style("visibility", "visible");
-  })
-  .on("mousemove.tooltip", function(){
-    return tooltip
-    .style("top", (event.pageY-10)+"px")
-    .style("left",(event.pageX+10)+"px");
-  })
-  .on("mouseout.tooltip", function(){
-    return tooltip
-    .style("visibility", "hidden");
-  });
-
- 
-});
+}); });
 
 
 
 // moving and panning on the map: 
-var zoom = d3.behavior.zoom()
-    .scaleExtent([1,9])
-    .on("zoom", move); 
+// var zoom = d3.behavior.zoom()
+//     .scaleExtent([1,9])
+//     .on("zoom", move); 
 
-svg.call(zoom)
+// svg.call(zoom)
 
 // LIMITING THE RANGE OF ZOOMING BY SCROLL 
-function move() {
-  var t = d3.event.translate,
-      s = d3.event.scale;
+// function move() {
+//   var t = d3.event.translate,
+//       s = d3.event.scale;
 
-  t[0] = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t[0]));
-  t[1] = Math.min(height / 2 * (s - 1) + 230 * s, Math.max(height / 2 * (1 - s) - 230 * s, t[1]));
-  zoom.translate(t);
-  g.style("stroke-width", 1 / s).attr("transform", "translate(" + t + ")scale(" + s + ")");
-}
+//   t[0] = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t[0]));
+//   t[1] = Math.min(height / 2 * (s - 1) + 230 * s, Math.max(height / 2 * (1 - s) - 230 * s, t[1]));
+//   zoom.translate(t);
+//   g.style("stroke-width", 1 / s).attr("transform", "translate(" + t + ")scale(" + s + ")");
+// }
 
 
 </script>
@@ -223,5 +197,8 @@ function move() {
   </defs> -->
 
 
+
 </script>
+
+
 

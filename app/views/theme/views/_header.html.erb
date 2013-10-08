@@ -1,22 +1,24 @@
 <div id="header">
   <div class="row">
-  <div class="container large-3 small-centered-columns">
-    <% if @settings.logo_image.file? %>
-
-      <a href="/"><%= image_tag @settings.logo_image.url, alt: "logo" %></a>
-
-    <% else %>
-
-      <h1><a href="/">bootcamp.me</a></h1>
-
-    <% end %>
-
-    <% if !@settings.header_link_text.blank? && !@settings.header_link_url.blank? %>
-    <div class="header_link">
-      <a href="<%= @settings.header_link_url %>" target="_blank" class="btn"><%= @settings.header_link_text %></a>
+    <div class="large-4 columns">
+      <a href="/"><h1>bootcamp.me</h1></a>
     </div>
-    <% end %>
-
-  </div>
+    <div class ="main-menu large-6 columns">
+      <ul>
+        <li>MENU ITEM 1</li>
+        <li>MENU ITEM 2</li>
+        <li>MENU ITEM 3</li>
+      </ul>
+    </div>
   </div>
 </div>
+
+<style>
+
+.main-menu {margin-top:30px;}
+.main-menu li{
+  display:inline;
+  padding:5px;
+  background-color: lightblue;
+}
+</style>
