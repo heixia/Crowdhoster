@@ -49,7 +49,7 @@
                 </div>
             <% end %>
 
-            <p class="numbers pull-left">
+            <p class="numbers">
             <% if campaign.expired? %>
               <strong>No</strong><br/>days left!
             <% else %>
@@ -60,7 +60,7 @@
             <% end %>
             </p>
 
-            <p class="numbers pull-right" style="text-align:right">
+            <p class="numbers" style="text-align:right">
               <% if campaign.goal_type == 'dollars' %>
               <strong>$<%= campaign.raised_amount.ceil %></strong><br/>
               <%= campaign.progress_text %>

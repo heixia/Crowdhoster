@@ -115,7 +115,7 @@
       <div class="main_content <%= 'narrow' if @campaign.rewards? %>">
         <% if @campaign.include_comments %>
           <div class="tabbable <%= 'narrow' if @campaign.rewards? %>">
-              <ul class="nav nav-tabs">
+              <ul class="">
                 <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
                 <li><a href="#tab2" data-toggle="tab" onclick="load_disqus()">Comments <span class="badge badge-info" id="count"></span></a></li>
               </ul>
