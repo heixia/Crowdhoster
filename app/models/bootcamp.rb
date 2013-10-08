@@ -3,6 +3,9 @@ class Bootcamp < ActiveRecord::Base
 
   has_many :tweets
 
+extend FriendlyId
+friendly_id :name 
+
 def full_location
   "#{address} #{city} #{st_pr} #{country}"
 end
