@@ -1,16 +1,27 @@
 <% Bootcamp.all.each do |camp| %>
-<table>
-<tr>
-<%= link_to("#{camp.name}", camp )  %>
-<br />
+<%= link_to("#{camp.name}", camp )  %> ||
 <% end %>
+
+<div id="tag_cloud">
+  <% tag_cloud Bootcamp.tag_counts, %w{s m l} do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
 
 <style>
 
+#tag_cloud {
+  background-color:black;
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
 
 path {
-  stroke: white;
-  stroke-width: 0.5px;
+  stroke: black;
+  stroke-width:1px;
   fill: #a6ee9a;
     }
 
@@ -29,6 +40,7 @@ path {
 }
 
 </style>
+
 
 
 

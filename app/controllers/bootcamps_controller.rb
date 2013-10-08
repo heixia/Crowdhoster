@@ -2,6 +2,11 @@ class BootcampsController < ApplicationController
 
   def index 
     @bootcamps = Bootcamp.all
+    if params[:tag]
+      @bootcamps = Bootcamp.tagged_with(params[:tag])
+    else
+      @bootcamps=Bootcamp.all
+    end
   end
 
   def show
@@ -18,6 +23,7 @@ class BootcampsController < ApplicationController
       redirect_to @bootcamp, :notice => "Thanks for adding your bootcamp!"
     else
       render :action => 'new', :notice => "Oops! That didn't work."
+   end
   end
 
   def edit
@@ -27,7 +33,7 @@ class BootcampsController < ApplicationController
   def update
     @bootcamp = Bootcamp.find(params[:id])
     if @bootcamp.update_attributes(params[:bootcamp])
-      flash[:notice] = "Successfully updated product."
+      flash[:notice] = "Successfully updated bootcamp."
     end
     respond_with(@bootcamp)
   end
@@ -35,7 +41,7 @@ class BootcampsController < ApplicationController
   def destroy
     @bootcamp = Bootcamp.find(params[:id])
     @bootcamp.destroy
-      flash[:notice] = "Successfully destroyed product"
+      flash[:notice] = "Successfully destroyed bootcamp"
       respond_with(@bootcamp)
   end
 

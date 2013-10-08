@@ -22,7 +22,17 @@
 <p class="tweettext"><%= tweet.status %></p>
 <% end %>
 </div>
+
+<div id="languages">
+  <h3>LANGUAGES</h3>
+  <% @bootcamp.languages.any? %>
+  <%= raw @bootcamp.languages.map { |t| link_to t, tag_path(t) }.join(', ') %>
+</div>
+
+
 <%= link_to("Back to BootCamp Directory", bootcamps_url) %>
 <br />
 <br /> 
 <%= link_to("Home", root_path)  %>
+
+
