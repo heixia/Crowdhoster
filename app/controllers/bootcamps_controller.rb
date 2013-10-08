@@ -25,9 +25,18 @@ class BootcampsController < ApplicationController
   end
 
   def update
+    @bootcamp = Bootcamp.find(params[:id])
+    if @bootcamp.update_attributes(params[:bootcamp])
+      flash[:notice] = "Successfully updated product."
+    end
+    respond_with(@bootcamp)
   end
 
   def destroy
+    @bootcamp = Bootcamp.find(params[:id])
+    @bootcamp.destroy
+      flash[:notice] = "Successfully destroyed product"
+      respond_with(@bootcamp)
   end
 
 end
