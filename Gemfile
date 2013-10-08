@@ -60,3 +60,4 @@ gem 'jquery-ui-rails'
 gem 'crowdtilt', github: 'msaint/crowdtilt'
 
 gem 'draper'
+gem 'twitter'
