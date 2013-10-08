@@ -1,0 +1,22 @@
+<h1>Bootcamps Show Page</h1>
+
+<%= link_to("Back to BootCamp Directory", bootcamps_url) %>
+<br />
+<br /> 
+<%= link_to("Home", root_path)  %>
+
+<br/>
+<% params[:id] %>
+<br/>
+<%= @bootcamp.name %>
+<br/>
+<%= @bootcamp.address %>
+<br/>
+<%= @bootcamp.city %>
+<br/>
+<%= @bootcamp.country %>
+<br/>
+<%= @bootcamp.website_url %>
+<br/>
+<%= @bootcamp.twitter_handle %>
+<br/>
