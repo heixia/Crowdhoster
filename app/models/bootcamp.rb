@@ -4,10 +4,10 @@ class Bootcamp < ActiveRecord::Base
   has_many :tweets
 
 extend FriendlyId
-friendly_id :name 
+friendly_id :name , :use => :slugged
 
 acts_as_taggable
-acts_as_taggable_on :languages
+acts_as_taggable_on :types
 
 
 

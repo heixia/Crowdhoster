@@ -25,8 +25,7 @@
 
 <div id="languages">
   <h3>LANGUAGES</h3>
-  <% @bootcamp.languages.any? %>
-  <%= raw @bootcamp.languages.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  <%= raw @bootcamp.tags.map { |t| link_to t, tag_path(t) }.join(', ') %>
 </div>
 
 
