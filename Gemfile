@@ -58,8 +58,13 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+#crowdtilt latest
 gem 'crowdtilt', github: 'msaint/crowdtilt'
 
+#views
 gem 'draper'
+gem 'simple_form'
+#tweetscraper
 gem 'twitter'
+#tags
 gem 'acts-as-taggable-on'
