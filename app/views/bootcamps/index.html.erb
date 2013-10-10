@@ -81,6 +81,8 @@ g.append("circle")
     .attr("class", "logo")
     .attr("data-primary_language", "<%= camp.primary_language %>")
     .attr("id", "<%= camp.name.gsub(" ","-").downcase %>")
+    .attr("data-name", "<%= camp.name %>")
+    .attr("data-city", "<%= camp.city %>")
     .attr("cx", coords[0])
     .attr("cy", coords[1])
     .attr("r", 10)
@@ -109,15 +111,12 @@ $('svg circle').tipsy({
         fallback:"bootcamp",
         html: true, 
         title: function() {
-          var d = this.__data__;
-          return this.id;
+          circle='#'+this.id
+          name = $(circle).attr("data-name")
+          city = $(circle).attr("data-city")
+          return name+"<br/>("+city+")"
         }
 });
-
-var circles = d3.selectAll("circles")
-
-
-
 
 $('svg circle').on("click", function() {
   document.location = "/bootcamps/" + this.id;
@@ -125,32 +124,28 @@ $('svg circle').on("click", function() {
 
 $(".bootcamp-li").on("mouseover", function(){
   var d = this.id.slice(0,-4);
-  var properties = {
-               "stroke-width" : 5
-            };
   var bootcamp = $("#"+d);
-  bootcamp.pulse(properties, {pulses:5});
-  // $("#"+d).attr("stroke", "black").attr("stroke-width", 5)
-  // .scale(2);
+  $("#"+d).attr("stroke", "purple").attr("stroke-width", 5);
 });
 
-$(".bootcamplist").on("mouseout", function(){
+$(".bootcamp-li").on("mouseout", function(){
   var d = this.id.slice(0,-4);
   $("#"+d).attr("stroke", "white").attr("stroke-width", .25);
 })
 
 
 $('#rubyfilter').on("click", function() {
-  $('svg circle').hide();
-  $(".bootcamp-li").hide()
-  $("[data-primary_language='ruby']").show();
+  $('svg circle').show();
+  $('svg circle').not("[data-primary_language='ruby']").hide( "drop", { direction: "down" }, "slow" );
+  $(".bootcamp-li").hide();
+  // $("[data-primary_language='ruby']").show("fade");
 
 }); 
 
 $('#jsfilter').on("click", function() {
-  $('svg circle').hide();
-  $(".bootcamp-li").hide()
-  $("[data-primary_language='javascript']").show();
+  $('svg circle').show();
+  $('svg circle').not("[data-primary_language='javascript']").hide( "drop", { direction: "down" }, "slow" );
+  $(".bootcamp-li").hide();
 }); 
 
 $("#allfilter").on("click", function(){
