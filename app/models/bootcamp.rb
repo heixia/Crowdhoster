@@ -15,32 +15,24 @@ def full_location
   "#{address} #{city} #{st_pr} #{country}"
 end
 
-def self.total_count
-  Bootcamp.all.count
-end
+# def self.total_count
+#   Bootcamp.all.count
+# end
 
 def self.sum_tuition
-  sum = 0
-  Bootcamp.all.each do |camp|
-    sum += bootcamp.tuition if bootcamp.tuition != nil
-  end
-  return sum
+  Bootcamp.sum(&:tuition)
 end 
 
-def sum_hours
-  sum=0
-  Bootcamp.all.each do |camp|
-    sum += bootcamp.hours if bootcamp.hours != nil
-  end
-  return sum
+def self.sum_hours
+  Bootcamp.sum(&:hours)
 end
 
 def self.avg_hours
-  self.sum_hours/self.total_count
+  self.sum_hours/self.count
 end
 
 def self.avg_tuition
-  sum_tuition/total_count
+  self.sum_tuition/self.count
 end
 
 def cost_per_hour
@@ -48,11 +40,8 @@ def cost_per_hour
 end
 
 def self.avg_cost_per_hour
-  sum=0
-  Bootcamp.all.each do |camp|
-    sum+= camp.cost_per_hour if camp.cost_per_hour != nil
-  end
-  return sum
+  Bootcamp.sum(&:cost_per_hour)
 end
+
 end
 
