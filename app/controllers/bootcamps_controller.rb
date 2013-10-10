@@ -45,8 +45,6 @@ class BootcampsController < ApplicationController
       redirect_to(@bootcamp)
   end
 
-  def statistics
-    @bootcamps=Bootcamps.all
     
 
 end
