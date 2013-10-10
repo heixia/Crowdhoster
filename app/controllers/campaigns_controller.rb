@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
   end
 
   def index
-    @campaigns=Campaigns.all
+    @campaigns=Campaign.all
   end
 
   def checkout_amount
