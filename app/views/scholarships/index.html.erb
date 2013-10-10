@@ -1,3 +1,34 @@
+<h1> Scholarships Index Page</h1>
+
+<div class="row">
+<div class="large-8 columns">
+<h2>CURRENT SCHOLARSHIPS</h2>
 <% @scholarships.each do |scholarship| %>
-  <%= scholarship.name %>
+  <% if !scholarship.expired? %>
+    <div class="scholarbox"><h3><%= scholarship.name %></h3>
+  </div>
+  <% end %>
 <% end %>
+</div>
+</div>
+
+<div class="row">
+<div class="large-12 columns">
+<h2>PAST SCHOLARSHIPS</h2>
+<% @scholarships.each do |scholarship| %>
+  <% if scholarship.expired? %>
+    <div class="scholarbox"><h3><%= scholarship.name %></h3></div>
+  <% end %>
+<% end %>
+</div>
+</div>
+
+<style>
+
+.scholarbox{
+  width:250px;
+  float:left;
+  padding:25px;
+}
+
+</style>

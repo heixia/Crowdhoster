@@ -3,12 +3,15 @@
 
 <div id="homepage">
   <div class="container clearfix">
-
-      <div class="homepage_content clearfix">
-        <%= raw(@settings.homepage_content) %>
+      <div class="row">
+      <div class="homepage_content clearfix large-12 columns">
+        <p>Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+        <p>Donec sed odio dui. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+        <p>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper.</p>
       </div>
-    
-    <div class="campaigns">
+    </div>
+    <div class="row">
+    <div class="campaigns large-12 columns">
 
       <% if @campaigns.count > 0 %>
         <% @campaigns.each do |campaign| %>
@@ -81,3 +84,15 @@
     </div>
   </div>
 </div>
+
+<style>
+div#header {
+  background-color: #945823;
+  border-radius: 0px 0px 100px 100px;
+}
+
+#homepage div.container {
+background-color: white;
+  
+}
+</style>
