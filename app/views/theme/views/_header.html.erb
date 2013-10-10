@@ -1,19 +1,14 @@
 <div id="header">
   <div class="row">
-    <div class="large-4 columns">
-      <a href="/"><h1>bootcamp.me</h1></a>
+    <div class="large-6 columns">
+      <a href="/"><h1 id="logo">{devocracy logo}</h1></a>
     </div>
     <div class ="main-menu large-6 columns">
       <ul>
-<<<<<<< HEAD
+
         <li><%= link_to "Create Scholarship", new_admin_campaign_path  %></li>
         <li><%= link_to "Find Scholarship", admin_campaigns_path %></li>
         <li><%= link_to "Browse Bootcamps", bootcamps_path %></li>
-=======
-        <li>MENU ITEM 1</li>
-        <li><%= link_to "SCHOLARSHIPS", scholarships_path %></li>
-        <li>MENU ITEM 3</li>
->>>>>>> 071d584b3da701290541c8e810ca07236d09630c
       </ul>
     </div>
   </div>
@@ -21,11 +16,28 @@
 
 <style>
 
-.main-menu {margin-top:30px;}
+.main-menu {margin-top:0px;}
 .main-menu li{
-  display:inline;
+  display:inline-block;
   padding:5px;
-  background-color: lightblue;
+  background-color: grey;
+  width:150px;
+  height:100px;
+  color:white;
+  text-shadow:none;
 }
+
+div#header {
+  background-color: #945823;
+  border-radius: 0px 0px 10px 10px;
+}
+
+#homepage div.container {
+background-color: white;
+  
+}
+
+#logo {color:#FB7D18;text-shadow:none;}
+
 </style>
 

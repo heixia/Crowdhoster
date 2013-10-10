@@ -1,8 +1,3 @@
-<ul class="bootcamplist">
-<% Bootcamp.all.each do |camp| %>
-<li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
-<% end %>
-<button id="rubyfilter" class="small">RUBY</button><button id = "jsfilter" class="small">JAVASCRIPT</button><button id = "allfilter" class="small">ALL</button>
 
 <style>
 
@@ -12,15 +7,10 @@ path {
   fill: #2E2D2B;
     }
 
-#main ul.bootcamplist {
-  float: right;
-  font-size: 1.2em;
-  margin-right: 2%;
-    
+.bootcamp-li{
+  border-bottom: 1px solid grey;
 }
 
-.bootcamp-li{border-bottom: 1px solid grey;
-}
 
 </style>
 
@@ -33,11 +23,19 @@ path {
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 
 
-
+<div class="row">
+<div id="mapbox" class="large-9 columns"></div>
+<div class="large-2 columns"><ul id="bootcamplist">
+<% Bootcamp.all.each do |camp| %>
+<li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
+<% end %>
+</ul>
+</div></div>
+<button id="rubyfilter" class="tiny">RUBY</button><button id = "jsfilter" class="tiny">JAVASCRIPT</button><button id = "allfilter" class="tiny">ALL</button>
 <script>
 // set the size of our map
 var width = 800;
-    height = 650;
+    height = 550;
 
 // set up the view of the map
 // projections adjusts the display for 2D screens. 
@@ -45,11 +43,11 @@ var width = 800;
 // Mercator is conservative option 
 var projection = d3.geo.mercator()
     .center([80,40]) // default [0,0], North America [100,30]
-    .scale(700)    // default (150). zoom in w/ > values
+    .scale(500)    // default (150). zoom in w/ > values
     .rotate([-190,0]); // [longitude, latitude, roll], def [0,0,0]
 
 // create svg window
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#mapbox").append("svg")
     .attr("width", width)
     .attr("height", height);
 // geo path generator used to specify projection type
@@ -138,16 +136,18 @@ $(".bootcamp-li").on("mouseout", function(){
 
 $('#rubyfilter').on("click", function() {
   $('svg circle').show();
+  $('.bootcamp-li').show();
   $('svg circle').not("[data-primary_language='ruby']").hide( "drop", { direction: "down" }, "slow" );
-  $(".bootcamp-li").hide();
+  $(".bootcamp-li").not("[data-primary_language='ruby']").hide();
   // $("[data-primary_language='ruby']").show("fade");
 
 }); 
 
 $('#jsfilter').on("click", function() {
   $('svg circle').show();
+  $('.bootcamp-li').show();
   $('svg circle').not("[data-primary_language='javascript']").hide( "drop", { direction: "down" }, "slow" );
-  $(".bootcamp-li").hide();
+  $(".bootcamp-li").not("[data-primary_language='javascript']").hide();
 }); 
 
 $("#allfilter").on("click", function(){
@@ -179,6 +179,8 @@ $("#allfilter").on("click", function(){
 
 
 </script>
+
+
 <svg id="logos" width="80" height="80">
   <defs id="mydefs">
   <% @bootcamps.each_with_index do |camp, index| %>
