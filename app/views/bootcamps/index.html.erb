@@ -7,9 +7,9 @@
 <style>
 
 path {
-  stroke: teal;
+  stroke: #945823;
   stroke-width:1px;
-  fill: grey;
+  fill: #2E2D2B;
     }
 
 #main ul.bootcamplist {
@@ -63,6 +63,8 @@ var g = svg.append("g");
 // load and display the world, draws the map for us.
 d3.json("/assets/world.json", function(error, topology) {
     g.selectAll("path")
+        .data(topojson.feature(topology, topology.objects.countries)
+            .features)
         .data(topojson.feature(topology, topology.objects.countries)
             .features) // data that defines countries
       .enter()

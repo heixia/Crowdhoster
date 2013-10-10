@@ -1,8 +1,7 @@
 Crowdhoster::Application.routes.draw do
   resources :bootcamps
-  get 'campaigns',                            to: 'campaigns#index'
   get 'tags/:tag',                            to: 'bootcamps#index',                        as: :tag
-  resources 'scholarships', controller: "campaigns"
+  resources :scholarships
   
   mount Ckeditor::Engine => '/ckeditor'
 
