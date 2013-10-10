@@ -1,7 +1,8 @@
 <ul class="bootcamplist">
 <% Bootcamp.all.each do |camp| %>
-<li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link"><%= link_to("#{camp.name}", camp )  %></li>
+<li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
 <% end %>
+<button id="rubyfilter" class="small">RUBY</button><button id = "jsfilter" class="small">JAVASCRIPT</button><button id = "allfilter" class="small">ALL</button>
 
 <style>
 
@@ -75,11 +76,13 @@ var lat = (<%= camp.lat %>);
 var lon = (<%= camp.lon %>);
 var coords = projection([lon,lat]);
 
-
 // template for adding cities with Ruby script 
 g.append("circle")
     .attr("class", "logo")
+    .attr("data-primary_language", "<%= camp.primary_language %>")
     .attr("id", "<%= camp.name.gsub(" ","-").downcase %>")
+    .attr("data-name", "<%= camp.name %>")
+    .attr("data-city", "<%= camp.city %>")
     .attr("cx", coords[0])
     .attr("cy", coords[1])
     .attr("r", 10)
@@ -108,36 +111,49 @@ $('svg circle').tipsy({
         fallback:"bootcamp",
         html: true, 
         title: function() {
-          var d = this.__data__;
-          return this.id;
+          circle='#'+this.id
+          name = $(circle).attr("data-name")
+          city = $(circle).attr("data-city")
+          return name+"<br/>("+city+")"
         }
 });
- 
+
 $('svg circle').on("click", function() {
   document.location = "/bootcamps/" + this.id;
 });
 
 $(".bootcamp-li").on("mouseover", function(){
   var d = this.id.slice(0,-4);
-  var properties = {
-               "stroke-width" : 5
-            };
   var bootcamp = $("#"+d);
-  bootcamp.pulse(properties, {pulses:5});
-  // $("#"+d).attr("stroke", "black").attr("stroke-width", 5)
-  // .scale(2);
+  $("#"+d).attr("stroke", "purple").attr("stroke-width", 5);
 });
 
-$(".bootcamplist").on("mouseout", function(){
+$(".bootcamp-li").on("mouseout", function(){
   var d = this.id.slice(0,-4);
   $("#"+d).attr("stroke", "white").attr("stroke-width", .25);
 })
 
 
+$('#rubyfilter').on("click", function() {
+  $('svg circle').show();
+  $('svg circle').not("[data-primary_language='ruby']").hide( "drop", { direction: "down" }, "slow" );
+  $(".bootcamp-li").hide();
+  // $("[data-primary_language='ruby']").show("fade");
 
-$('svg circle#Bitmaker Labs').on("mouseover", function() {
-  console.log(this.id);
-}); });
+}); 
+
+$('#jsfilter').on("click", function() {
+  $('svg circle').show();
+  $('svg circle').not("[data-primary_language='javascript']").hide( "drop", { direction: "down" }, "slow" );
+  $(".bootcamp-li").hide();
+}); 
+
+$("#allfilter").on("click", function(){
+  $('svg circle').show();
+  $(".bootcamp-li").show()
+});
+});
+
 
 
 
@@ -178,6 +194,7 @@ $('svg circle#Bitmaker Labs').on("mouseover", function() {
     </pattern>
   <% end %>
   </defs>
+
 
 <!-- est. pattern for logos to insert into d3 circle object -->
 <!-- <svg id="mySvg" width="80" height="80">

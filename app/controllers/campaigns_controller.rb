@@ -11,6 +11,10 @@ class CampaignsController < ApplicationController
     render 'theme/views/campaign'
   end
 
+  def index
+    @campaigns=Campaigns.all
+  end
+
   def checkout_amount
     @reward = false
     if params.has_key?(:reward) && params[:reward].to_i != 0
