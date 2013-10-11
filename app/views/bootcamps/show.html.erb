@@ -29,8 +29,10 @@
 </div>
 
 <div id="mapcontainer"></div>
-<button type="button" onclick="graphDraw("hours", 0.1)">Toggle to Hours</button>
+<button type="button" id="toggleToHours">Toggle</button>
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+
 
 <script>
 
@@ -88,10 +90,18 @@ var graphDraw = function(sub, multiplier) {
     .attr("fill", "black");
   }
 
-graphDraw("tuition", 0.01);
-graphDraw("hours", 0.1);
+
+$(document).ready(function() {
+
+  graphDraw("tuition", 0.01);
+  graphDraw("hours", 0.1);
+  $('#mapcontainer').children().first().hide();
 
 
+  $("#toggleToHours").click(function() {
+      $('#mapcontainer').children().toggle(1500);   
+  });
+});
 
 
 
