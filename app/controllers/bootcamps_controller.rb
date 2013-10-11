@@ -23,7 +23,7 @@ class BootcampsController < ApplicationController
       redirect_to @bootcamp, :notice => "Thanks for adding your bootcamp!"
     else
       render :action => 'new', :notice => "Oops! That didn't work."
-   end
+    end
   end
 
   def edit
@@ -45,6 +45,13 @@ class BootcampsController < ApplicationController
       redirect_to(@bootcamp)
   end
 
-    
+  def statistics
+    @bootcamps=Bootcamp.all
+
+    respond_to do |format|
+      format.html 
+      format.json { render :json => @bootcamps }
+    end
+  end  
 
 end
