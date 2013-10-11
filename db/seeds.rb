@@ -23,6 +23,6 @@ def seed_from_csv_file(path, label, has_headers = true)
   end
 end
 
-seed_from_csv_file("db/seeds/bootcamps.csv", "Bootcamp") { |row| Bootcamp.create!(row.to_hash) }
+seed_from_csv_file("db/seeds/bootcamps2.csv", "Bootcamp") { |row| Bootcamp.create!(row.to_hash) }
 
 

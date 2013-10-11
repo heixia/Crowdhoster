@@ -1,5 +1,5 @@
 class Bootcamp < ActiveRecord::Base
-  attr_accessible :name, :address, :city, :st_pr, :country, :contact_email, :website_url, :lat, :lon, :twitter_handle, :description, :tag_list, :language_list, :hours, :tuition
+  attr_accessible :name, :address, :weeks, :notes, :city, :st_pr, :country, :contact_email, :website_url, :lat, :lon, :twitter_handle, :description, :tag_list, :language_list, :hours, :tuition, :primary_language
 
   has_many :tweets
   
@@ -19,6 +19,20 @@ end
 # def self.total_count
 #   Bootcamp.all.count
 # end
+
+def self.num_in_city(city)
+  Bootcamp.where("city" => city).count
+end
+
+def self.num_in_city_index(city)
+  @city_index=1
+  @bootcamps=Bootcamp.where("city" => city)
+  @bootcamps.each do |camp|
+    camp.city_index=@city_index
+    camp.save
+    @city_index+=1
+  end
+end
 
 def self.sum_tuition
   Bootcamp.sum(&:tuition)

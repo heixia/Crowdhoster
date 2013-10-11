@@ -75,6 +75,7 @@ d3.json("/assets/world.json", function(error, topology) {
 var lat = (<%= camp.lat %>);
 var lon = (<%= camp.lon %>);
 var coords = projection([lon,lat]);
+var ci = <%= camp.city_index %>
 
 // template for adding cities with Ruby script 
 g.append("circle")
@@ -83,8 +84,10 @@ g.append("circle")
     .attr("id", "<%= camp.name.gsub(" ","-").downcase %>")
     .attr("data-name", "<%= camp.name %>")
     .attr("data-city", "<%= camp.city %>")
+    .attr("data-num_in_city", <%= Bootcamp.num_in_city(camp.city)  %>)
     .attr("cx", coords[0])
-    .attr("cy", coords[1])
+    .attr("cx", coords[0]+((2-ci)*10))
+    .attr("cy", coords[1]+((2-ci)*5))
     .attr("r", 10)
     .attr("fill", "url(#image<%= index %>)")
     .attr("stroke", "white")
