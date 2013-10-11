@@ -11,6 +11,7 @@ class BootcampsController < ApplicationController
 
   def show
     @bootcamp = Bootcamp.find(params[:id])
+    @bootcamps = Bootcamp.all 
   end
 
   def new
