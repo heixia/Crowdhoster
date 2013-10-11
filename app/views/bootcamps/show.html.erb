@@ -16,7 +16,7 @@
 <%= @bootcamp.twitter_handle %>
 <br/>
 
-<div id ="tweetbox">
+<div id="tweetbox">
 <h3>Recent Tweets</h3>
 <% @bootcamp.tweets.limit(5).each do |tweet| %>
 <p class="tweettext"><%= tweet.status %></p>
@@ -26,6 +26,99 @@
 <div id="languages">
   <h3>LANGUAGES</h3>
   <%= raw @bootcamp.tags.map { |t| link_to t, tag_path(t) }.join(', ') %>
+</div>
+
+<div id="mapcontainer"></div>
+<button type="button" id="toggleToHours">Toggle</button>
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+
+
+<script>
+
+
+var w = 500;
+var h = 250;
+var barPadding = 1;
+
+var dataset = <%= raw(@bootcamps.to_json) %>
+
+console.log(dataset);
+
+
+var graphDraw = function(sub, multiplier) {
+  var svg = d3.select("#mapcontainer").append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    .attr("padding", 20)
+    .attr("margin", 20);
+
+
+    var xScale = function(d, i) { 
+        return i * (w / dataset.length); 
+    };
+
+    var yScale = function(d) {
+          return h - (d[sub] * multiplier);
+    };
+
+    svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .attr("x", xScale)
+    .attr("y", yScale)
+    .attr("width", w / dataset.length - barPadding*3)
+    .attr("height", function(d) {
+      return d[sub] * multiplier ;
+    })
+    .attr("fill", function(d) {
+      return "rgb(0, " + (Math.round(d[sub] * multiplier)) + ", 100)";
+    });
+    svg.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(function(d) { return d[sub]; })
+    .attr("text-anchor", "middle")
+    .attr("x", function(d,i) { 
+      return i * (w / dataset.length) + (w / dataset.length- barPadding) /2 
+    })
+    .attr("y", function(d) { return h - (d[sub] * multiplier) + 15 })
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "black");
+  }
+
+
+$(document).ready(function() {
+
+  graphDraw("tuition", 0.01);
+  graphDraw("hours", 0.1);
+  $('#mapcontainer').children().first().hide();
+
+
+  $("#toggleToHours").click(function() {
+      $('#mapcontainer').children().toggle(1500);   
+  });
+});
+
+
+
+
+
+// // insert axis at bottom
+// var scale = d3.scale.linear()
+//     .domain([5000, d3.max(dataset)])
+//     .range([0,h]);
+
+// var xAxis = d3.svg.axis()
+//     .scale()
+//     .orient("bottom");
+
+
+
+  </script>
 </div>
 
 
