@@ -76,7 +76,8 @@ var lat = (<%= camp.lat %>);
 var lon = (<%= camp.lon %>);
 var coords = projection([lon,lat]);
 var ci = <%= camp.city_index %>
-
+var colors = ["teal", "red", "brown"]
+var rand = Math.floor(Math.random()*colors.length)
 // template for adding cities with Ruby script 
 g.append("circle")
     .attr("class", "logo")
@@ -88,8 +89,9 @@ g.append("circle")
     .attr("cx", coords[0])
     .attr("cx", coords[0]+((2-ci)*10))
     .attr("cy", coords[1]+((2-ci)*5))
-    .attr("r", 10)
+    .attr("r", 3)
     .attr("fill", "url(#image<%= index %>)")
+    .attr("fill", "white")
     .attr("stroke", "white")
     .attr("stroke-width", 0.25)
     .on("mouseover", function(){ 
@@ -140,8 +142,8 @@ $(".bootcamp-li").on("mouseout", function(){
 $('#rubyfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='ruby']").hide( "drop", { direction: "down" }, "slow" );
-  $(".bootcamp-li").not("[data-primary_language='ruby']").hide();
+  $('svg circle').not("[data-primary_language='Ruby on Rails']").hide( "drop", { direction: "down" }, "slow" );
+  $(".bootcamp-li").not("[data-primary_language='Ruby on Rails']").hide();
   // $("[data-primary_language='ruby']").show("fade");
 
 }); 
@@ -149,8 +151,8 @@ $('#rubyfilter').on("click", function() {
 $('#jsfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='javascript']").hide( "drop", { direction: "down" }, "slow" );
-  $(".bootcamp-li").not("[data-primary_language='javascript']").hide();
+  $('svg circle').not("[data-primary_language='Javascript']").hide( "drop", { direction: "down" }, "slow" );
+  $(".bootcamp-li").not("[data-primary_language='Javascript']").hide();
 }); 
 
 $("#allfilter").on("click", function(){

@@ -18,11 +18,19 @@ module TwitterGetter
   class TweetScraper
 
     def self.scrape_tweets_for_bootcamp(bootcamp)
-      Twitter.user_timeline(bootcamp.twitter_handle, {:exclude_replies => true, :include_rts => false}).each do |bootcamptweet|
+      begin
+        puts "scraping tweets for #{bootcamp.name}"
+        Twitter.user_timeline(bootcamp.twitter_handle, {:exclude_replies => true, :include_rts => false}).each do |bootcamptweet|
         tweet=bootcamp.tweets.new
         tweet.status=bootcamptweet.text
         tweet.save
         end
+      rescue
+        puts "no tweets for #{bootcamp.name}"
+        tweet=bootcamp.tweets.new
+        tweet.status="Sorry, No Tweets for this bootcamp"
+        tweet.save
+      end
     end
 
     # def self.get_counts_for_bootcamp(bootcamp)
