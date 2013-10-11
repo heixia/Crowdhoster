@@ -57,7 +57,7 @@ var graphDraw = function(sub, multiplier) {
     };
 
     var yScale = function(d) {
-          return h - (d[sub] * 0.01);
+          return h - (d[sub] * multiplier);
     };
 
     svg.selectAll("rect")
