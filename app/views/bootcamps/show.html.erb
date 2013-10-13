@@ -1,31 +1,29 @@
 
 <div class="row">
-<div class="three columns"><img src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %>></div>
-<div class ="five columns">
-<h1><%= @bootcamp.name %></h1>
-</div>
+<div class="large-8 columns">
+  <img src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> width="200px" style="float:right">
+<div class="bootcampbox"><h2><%= @bootcamp.name %></h2>
 
 <%= @bootcamp.address %>
-<br/>
 <%= @bootcamp.city %>
-<br/>
-<%= @bootcamp.country %>
-<br/>
 <%= @bootcamp.website_url %>
-<br/>
 <%= @bootcamp.twitter_handle %>
-<br/>
 
-<div id="tweetbox">
-<h3>Recent Tweets</h3>
+
+</div></div></div>
+
+<div id="tweetbox" class="large-4 columns">
+<h4>Recent Tweets</h4>
 <% @bootcamp.tweets.limit(5).each do |tweet| %>
 <p class="tweettext"><%= tweet.status %></p>
 <% end %>
 </div>
 
-<div id="languages">
-  <h3>LANGUAGES</h3>
-  <%= raw @bootcamp.tags.map { |t| link_to t, tag_path(t) }.join(', ') %>
+<div id="skills">
+  <h3>SKILLS</h3>
+  <% @bootcamp.tags.each do |t| %>
+    <%= t.name %>
+  <% end %>
 </div>
 
 <div id="mapcontainer"></div>
