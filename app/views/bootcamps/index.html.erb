@@ -29,12 +29,10 @@ path {
     <button class="rubyfilter">ruby</button><br><button class = "jsfilter">javascript</button><br><button class="pythonfilter">python</button></br><button class = "allfilter">all</button>
   </div>
 </div>
-<div class="row">
-  <div class="large-8 columns"><h3>United States</h3></div>
-  <div class="large-4 columns"><h3>Canada</h3></div>
-</div>
+
 <div class="row">
   <div class="large-4 columns">
+    <h3>United States</h3>
     <h4>West Coast</h4>
     <ul id="bootcamplist">
       <% Bootcamp.west_coast.each do |camp| %>
@@ -48,6 +46,7 @@ path {
       <% end %>
   </div>
   <div class="large-4 columns">
+    <h3>  &nbsp; </h3>
     <h4>Midwest</h4>
     <ul id="bootcamplist">
       <% Bootcamp.midwest.each do |camp| %>
@@ -71,6 +70,7 @@ path {
     </ul>
   </div>
   <div class="large-4 columns">
+    <h3>Canada</h3>
     <h4>Ontario</h4>
     <ul id="bootcamplist">
       <% Bootcamp.ontario.each do |camp| %>
