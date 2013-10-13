@@ -10,6 +10,8 @@ friendly_id :name , :use => :slugged
 acts_as_taggable
 acts_as_taggable_on :tags
 
+scope :by_country, -> country {where(country: country)}
+
 def self.canada
   where(:country => "Canada")
 end
@@ -67,9 +69,10 @@ def self.midwest
 end
 
 def self.rest_of_world
-  if !self.united_states && !self.canada
-  end
+  where("country != ? and country != ?", "USA", "Canada")
 end
+
+
 
 
 

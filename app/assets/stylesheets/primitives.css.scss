@@ -1,12 +1,27 @@
-$h1_color: #323232;
+$dark_grey:#3C3B37;
+$off_white: #FFFCF4;
+$orange:#FD8C3D;
+$lime_green:#74E149;
+$light_brown:#FFD2AB;
+$dark_brown:#7F4018;
+$light_grey:#ccc;
+
+
+// $h1_color: #323232;
 $h2_color: #4B4B4B;
 $h3_color: #4B4B4B;
 $h4_color: #292929;
 $h5_color: #4B4B4B;
 
-$text_color: #6B6B6B;
-$link_color: #0008D6;
-$text_shadow: 0 1px 0px #fff;
+$h1_color:$orange;
+$h2_color:$orange;
+$h3_color:$orange;
+$h4_color:$dark_grey;
+
+// $text_color: #6B6B6B;
+$text_color:$dark-grey;
+$link_color: $orange;
+
 $font_size: 22px;
 
 // Lockitron uses ProximaNova Regular, but that costs money, so we're defaulting to Helveitca Neue instead.
@@ -34,6 +49,9 @@ $tertiary_font:  "American Typewriter";
   background: #f6f6f6;
 }
 
+html, body, #main{
+  background-color:$off-white;
+}
 h1 {
   margin: 0 auto;
   font-family: $secondary_font;
@@ -55,7 +73,7 @@ h2 {
   font-family: $secondary_font, $tertiary_font, $primary_font;
   font-size: 45px;
   color: $h2_color;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   font-weight: 200;
   letter-spacing: 2px;
 }
@@ -64,7 +82,7 @@ h3 {
   font-family: $secondary_font, $tertiary_font, $primary_font;
   font-size: 30px;
   color: $h3_color;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 200;
 }
 
@@ -85,7 +103,7 @@ h5 {
 
 p {
   font-family: $primary_font, "Helvetica Neue", "Helvetica";
-  color: #6b6b6b;
+  color: $dark_grey;
   font-size: 18px;
   line-height: 1.5;
   text-shadow: 0 1px 0px #fff;
@@ -154,7 +172,7 @@ select.error {
 /* Powered by callout below the footer */
 #powered {
   padding: 20px;
-  background: white;
+  background: #ccc;
   text-align: center;
   a {
     color: black;
