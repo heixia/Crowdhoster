@@ -182,3 +182,16 @@ select.error {
     }
   }
 }
+
+/* Buttons */
+
+button {background-color:$dark_brown;
+font-family:$secondary_font, $tertiary_font, $primary_font;
+font-weight:200;
+color:$orange;
+border-radius:10px;}
+
+button:hover{
+  background-color: $dark_grey;
+  color:$lime_green;
+}

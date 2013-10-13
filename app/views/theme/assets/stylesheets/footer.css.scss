@@ -1,5 +1,7 @@
 #footer {
-  background: #e6e6e6;
+  background: $orange;
+  border-top: $lime_green solid 5px;
+  margin-top:10px;
 
   -moz-box-shadow: inset 0px 1px 3px 0px #acacac;
   -webkit-box-shadow: inset 0px 1px 3px 0px #acacac;
@@ -23,5 +25,6 @@
   }
   p {
     font-size: 14px;
+    text-shadow:none;
   }
 }
