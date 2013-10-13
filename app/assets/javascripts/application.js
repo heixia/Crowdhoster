@@ -28,3 +28,5 @@
 //= require theme
 //= require validate
 //= require event_tracking
+
+$(function(){ $(document).foundation(); });

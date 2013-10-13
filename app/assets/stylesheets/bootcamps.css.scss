@@ -1,6 +1,8 @@
 // Place all the styles related to the bootcamps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "primitives";
+
 #mapcontainer {
     margin:2%;
     padding:20px;
@@ -8,26 +10,9 @@
     border-radius: 5px;
   }
   
-#tag_cloud {
-  background-color:black;
-  width: 400px;
-  line-height: 1.6em;
-  .s { font-size: 0.8em; }
-  .m { font-size: 1.2em; }
-  .l { font-size: 1.8em; }
+.bootcamp-li{
+  border-bottom: 1px solid $lime_green;
 }
 
-.tooltip {   
-  color: tomato;
-  position: absolute;           
-  text-align: center;           
-  width: 200px;                  
-  height: 100px;                 
-  padding: 5px;             
-  font: 20px sans-serif;        
-  background: lightsteelblue;   
-  border: 1px dashed white;      
-  border-radius: 8px;
-  opacity: 0.8; 
-}
+.bootcamp-list{margin-top:5px;padding-top:20px;border-top:2px dashed $dark-grey;}
 
