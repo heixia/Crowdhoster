@@ -47,27 +47,31 @@ console.log(dataset);
 
 
 var graphDraw = function(sub, multiplier) {
+
+  var xPlot = function(d, i) { return i * (w / dataset.length); };
+  var yPlot = function(d) { return h - (d[sub] * multiplier); };
+
+  var xScale = d3.scale.linear()
+    .domain([0, xPlot])
+    .range([0, yPlot]);
+
+
   var svg = d3.select("#mapcontainer").append("svg")
     .attr("width", w)
     .attr("height", h)
     .attr("padding", 20)
     .attr("margin", 20);
+ 
+  // var xAxis = d3.svg.axis()
+  //   .scale(xScale)
+  //   .orient("bottom");
 
-
-    var xScale = function(d, i) { 
-        return i * (w / dataset.length); 
-    };
-
-    var yScale = function(d) {
-          return h - (d[sub] * multiplier);
-    };
-
-    svg.selectAll("rect")
+  svg.selectAll("rect")
     .data(dataset)
     .enter()
     .append("rect")
-    .attr("x", xScale)
-    .attr("y", yScale)
+    .attr("x", xPlot)
+    .attr("y", yPlot)
     .attr("width", w / dataset.length - barPadding*3)
     .attr("height", function(d) {
       return d[sub] * multiplier ;
@@ -90,6 +94,9 @@ var graphDraw = function(sub, multiplier) {
     .attr("fill", "black");
   }
 
+ // svg.append("g")
+ //    .attr("class", "axis")
+ //    .call("xAxis");
 
 $(document).ready(function() {
 
@@ -102,20 +109,6 @@ $(document).ready(function() {
       $('#mapcontainer').children().toggle(1500);   
   });
 });
-
-
-
-
-
-// // insert axis at bottom
-// var scale = d3.scale.linear()
-//     .domain([5000, d3.max(dataset)])
-//     .range([0,h]);
-
-// var xAxis = d3.svg.axis()
-//     .scale()
-//     .orient("bottom");
-
 
 
   </script>
