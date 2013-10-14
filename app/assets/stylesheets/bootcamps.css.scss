@@ -1,3 +1,18 @@
 // Place all the styles related to the bootcamps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "primitives";
+
+#mapcontainer {
+    margin:2%;
+    padding:20px;
+    border:2px solid #d0d0d0;
+    border-radius: 5px;
+  }
+  
+.bootcamp-li{
+  border-bottom: 1px solid $lime_green;
+}
+
+.bootcamp-list{margin-top:5px;padding-top:20px;border-top:2px dashed $dark-grey;}
+

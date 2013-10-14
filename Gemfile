@@ -23,6 +23,8 @@ gem 'active_model_serializers'
 
 gem 'dstk'
 
+gem 'rails_autolink'
+
 group :production do
   gem 'newrelic_rpm'
 end

@@ -3,7 +3,8 @@
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= @settings.site_name %></title>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <title>Devocracy</title>
     <%= render 'layouts/facebook_metas' %>
     <%= render 'layouts/mobile_bookmark_metas' %>
     <%= csrf_meta_tags %>
@@ -33,18 +34,6 @@
       Powered by Crowdtilt
       </a>
     </div>
-    <%= link_to "Sign In", user_session_path, class: "tiny button" %>
-    <%= link_to "Sign Out", destroy_user_session_path, class: "tiny button", method: "delete" %>
 
-    <% if Rails.env.development? %>
-      <div id="debug" style="background: white; padding:50px"><%= debug(params) %></div>
-      <%= Rails.env %>
-      <% User.all.each do |user| %>
-      "ID: <%= user.id %> | EMAIL: <%= user.email %>"
-      <% end %>
-    <% end %>
-
-    <%= raw(@settings.custom_js) %>
-    <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
   </body>
 </html>

@@ -1,12 +1,13 @@
 <div id="campaign">
   <div id="funding_area">
     <div class="container clearfix">
-
-      <div class="center">
+      <div class="row">
+      <div class="large-8 column centered">
         <h2 class="campaign_title"><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h2>
       </div>
+    </div>
 
-      <div class="clearfix">
+      <div class="row clearfix">
       <% if @campaign.media_type == 'video' %>
 
         <div id="video">
@@ -102,15 +103,11 @@
         </div>
       </div>
     </div>
-
-      <!-- <div class="share"> -->
-        <!--  <%= render 'shared/share_buttons', campaign: @campaign, settings: @settings %>
-      <!-- </div> -->
-
     </div>
   </div>
 
-  <div id="campaign_body">
+  <div class="row">
+    <div id="large-8 column campaign_body">
     <div class="container clearfix">
       <div class="main_content <%= 'narrow' if @campaign.rewards? %>">
         <% if @campaign.include_comments %>
@@ -177,10 +174,10 @@
     </div>
   </div>
 
-  <div id="second_call_to_action">
-    <div class="container">
+  <div id="call_to_action">
+    <div class="large-12 columns center">
       <div><%= raw(@campaign.secondary_call_to_action_description) %></div>
-      <div class="center">
+      <div class="large-12 columns center">
         <% if @campaign.expired? %>
           <span class="blue_button expired">
             <%= @campaign.secondary_call_to_action_button %>
@@ -193,13 +190,16 @@
       </div>
     </div>
   </div>
-
+  <div class="row">
   <% if @campaign.faqs.count > 0 %>
     <div id="faq">
-      <div class="container clearfix">
-        <div class="center">
+      <div class="large-6 column clearfix">
           <h3>Frequently Asked Questions</h3>
         </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 column">
         <ul>
             <% for i in 0...(@campaign.faqs.count/2.0).ceil %>
             <li class=''>
@@ -210,6 +210,8 @@
             </li>
           <% end %>
         </ul>
+  </div>
+  <div class="large-6 column">
         <ul class="col2">
             <% for i in (@campaign.faqs.count/2.0).ceil...@campaign.faqs.count %>
             <li class=''>
@@ -220,6 +222,7 @@
             </li>
           <% end %>
         </ul>
+    </div>
       </div>
     </div>
   <% end %>

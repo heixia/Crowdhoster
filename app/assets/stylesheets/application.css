@@ -10,9 +10,12 @@
  *
  * Core files
  *= require_self
+ *= require foundation_and_overrides
  *= require reset
  *= require jquery.ui.all
+ *= require primitives
  *= require main
  *= require tipsy
  *= require theme
+ *= require bootcamps
 */
