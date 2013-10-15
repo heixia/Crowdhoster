@@ -27,6 +27,7 @@ gem 'rails_autolink'
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end
 
 # Gems used only for assets and not required
