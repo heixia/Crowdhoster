@@ -1,32 +1,36 @@
 
 <div class="row">
-<div class="large-8 columns">
-  <img src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> width="200px" style="float:right">
-<div class="bootcampbox"><h2><%= @bootcamp.name %></h2>
+  <div class="large-8 columns">
+    <img src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> width="200px" style="float:right">
+      <div class="bootcampbox"><h2><%= @bootcamp.name %></h2>
 
-<%= @bootcamp.address %>
-<%= @bootcamp.city %>
-<%= @bootcamp.website_url %>
-<%= @bootcamp.twitter_handle %>
-
-
-</div></div></div>
-
-<div id="tweetbox" class="large-4 columns">
-<h4>Recent Tweets</h4>
-<% @bootcamp.tweets.limit(5).each do |tweet| %>
-<p class="tweettext"><%= tweet.status %></p>
-<% end %>
+        <%= @bootcamp.address %>
+        <%= @bootcamp.city %>
+        <%= @bootcamp.website_url %>
+        <%= @bootcamp.twitter_handle %>
+      </div>
+  </div>
 </div>
 
-<div id="skills">
-  <h3>SKILLS</h3>
-  <% @bootcamp.tags.each do |t| %>
-    <%= t.name %>
-  <% end %>
+<div class="row">
+  <div id="tweetbox" class="large-4 columns">
+    <h4>Recent Tweets</h4>
+    <% @bootcamp.tweets.limit(5).each do |tweet| %>
+    <p class="tweettext"><%= tweet.status %></p>
+    <% end %>
+  </div>
+
+  <div id="skills" class="large-4 columns">
+    <h3>SKILLS</h3>
+    <% @bootcamp.tags.each do |t| %>
+      <%= t.name %>
+    <% end %>
+  </div>
 </div>
 
-<div id="mapcontainer"></div>
+<div class="row">
+<div id="mapcontainer" class="large-12 columns"></div>
+</div>
 <button type="button" id="toggleToHours">Toggle</button>
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 

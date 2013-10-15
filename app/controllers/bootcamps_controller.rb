@@ -1,5 +1,7 @@
 class BootcampsController < ApplicationController
 
+before_filter :authenticate_user!, only: [:edit, :new, :destroy]
+  
   def index 
     @bootcamps = Bootcamp.all
     if params[:tag]
