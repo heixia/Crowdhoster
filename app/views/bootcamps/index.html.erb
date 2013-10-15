@@ -89,7 +89,12 @@ path {
     <!--  -->
   </div>
 </div>
-<button class="rubyfilter" class="tiny">RUBY</button><button class="jsfilter" class="tiny">JAVASCRIPT</button><button class="allfilter" class="tiny">ALL</button>
+<div class='row'>
+  <div class="large-8 columns centered">
+    <button class="rubyfilter" class="tiny">ruby</button><button class="jsfilter" class="tiny">javascript</button><button class="pythonfilter">python</button><button class="allfilter" class="tiny">all</button>
+  </div>
+</div>
+
 <script>
 // set the size of our map
 var width = 800;
@@ -200,23 +205,23 @@ $(".bootcamp-li").on("mouseout", function(){
 $('.rubyfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='Ruby on Rails']").hide( "drop", { direction: "down" }, "slow" );
+  $('svg circle').not("[data-primary_language='Ruby on Rails']").hide();
   $(".bootcamp-li").not("[data-primary_language='Ruby on Rails']").hide();
-  // $("[data-primary_language='ruby']").show("fade");
+
 
 }); 
 
 $('.jsfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='Javascript']").hide( "drop", { direction: "down" }, "slow" );
+  $('svg circle').not("[data-primary_language='Javascript']").hide();
   $(".bootcamp-li").not("[data-primary_language='Javascript']").hide();
 }); 
 
 $('.pythonfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='Python']").hide( "drop", { direction: "down" }, "slow" );
+  $('svg circle').not("[data-primary_language='Python']").hide();
   $(".bootcamp-li").not("[data-primary_language='Python']").hide();
 }); 
 

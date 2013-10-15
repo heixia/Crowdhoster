@@ -14,6 +14,7 @@
  *= require reset
  *= require jquery.ui.all
  *= require primitives
+ *- require foundation_and_overrides
  *= require main
  *= require tipsy
  *= require theme

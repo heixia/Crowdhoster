@@ -1,3 +1,7 @@
+<div id="modal_edit_form" style="display:none">
+<%= render "campaigns/amount" %>
+</div>
+
 <div id="campaign">
   <div id="funding_area">
     <div class="container clearfix">
@@ -245,4 +249,19 @@
       count.innerHTML=parseInt(parse.innerHTML,10);
     };
   </script>
+
 <% end %>
+
+  <script>
+    $('#secondary_cta').click(function(event) {
+        event.preventDefault();
+          $("#modal_edit_form").dialog({
+      autoOpen: true,
+      height: 600,
+      width: 600,
+      modal: true,
+      title: 'Contribute'
+  });
+      
+    });
+  </script>
