@@ -1,6 +1,6 @@
 <style>
 
-.axis text {
+svg text {
   font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
   font-size: 18px;
   font-weight: 100;
@@ -8,9 +8,23 @@
   letter-spacing: 1.5px;
 }
 
+.xLabels {
+  font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
+  font-size: 30px;
+  font-weight: 100;
+  font-style: 1em;
+  letter-spacing: 1.5px;
+}
+#mapcontainer {
+  width: 550px;
+  height: 375px;
+}
+
+svg {
+  width: 525px;
+  height: 350px;
+}
 </style>
-
-
 
 <div class="row">
   <div class="large-8 columns">
@@ -46,130 +60,13 @@
 </div>
 <button type="button" id="toggleToHours">Toggle</button>
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-
+<script type="text/javascript" src="/assets/bcshow.js"></script>
 
 
 <script>
-
-
-var margin = {top: 10, right: 10, bottom: 10, left: 10};
-var w = 500 - margin.left - margin.right;
-var h = 375 - margin.top - margin.bottom; 
-var barPadding = 2;
-
 var dataset = <%= raw(@bootcamps.to_json) %>
-
 console.log(dataset);
-
-var graphDraw = function(sub, multiplier) {
-
-  var xPlot = function(d, i) { return i * (w / dataset.length); };
-  var yPlot = function(d) { return h - (d[sub] * multiplier); };
-
-//create x and y axes
-
-  var xScale = d3.scale.ordinal()
-    .domain(dataset.map(function (d) {return d.name; }))
-    .rangeRoundBands([barPadding, w + margin.left + margin.right], 0);
-
-  var xAxis = d3.svg.axis()
-    .scale(xScale)
-    .orient("top");
-
-// // y axis in $
-//   var y = d3.scale.linear()
-//     .range([height, 0]);
-
-
-  var svg = d3.select("#mapcontainer").append("svg")
-    .attr("width", w)
-    .attr("height", h)
-    .attr("padding", 20)
-    .attr("margin", 20);
- 
-
-
-  svg.selectAll("rect")
-    .data(dataset)
-    .enter()
-    .append("rect")
-    .attr("x", xPlot)
-    .attr("y", yPlot)
-    .attr("id", function(d){ return d.slug; })
-    .attr("width", w / dataset.length - barPadding*2)
-    .attr("height", function(d) { return d[sub] * multiplier ;})
-    .attr("fill", function(d) {
-      return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
-    })
-    .on("mouseover", function(){ 
-      d3.select(this).attr("stroke", "orange")
-    })
-    .on("mouseout", function(){ 
-      d3.select(this).attr("stroke", "green")
-    });
-    
-    
-  svg.selectAll("text")
-    .data(dataset)
-    .enter()
-    .append("text")
-    .text(function(d) { return "$" + d[sub]; })
-    .attr("text-anchor", "middle")
-    .attr("x", function(d,i) { 
-      return i * (w / dataset.length) + (w / dataset.length- barPadding) /2 
-    })
-    .attr("y", function(d) { return h - (d[sub] * multiplier) - 5 })
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "5px")
-    .attr("fill", function(d) {
-      return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
-    });
-  
-
-  svg.append("g")
-    .attr("class", "axis")
-    .attr("transform", "translate("+ barPadding +",5)")
-    .call(xAxis)
-    .selectAll("text")
-      .attr("id", function (d, i){ return dataset[i].slug + "_label"; })
-      .attr("class", "xLabels")
-      .style("text-anchor", "end")
-      .attr("opacity", 0.7)
-      .attr("transform", function (d) { return "rotate(-80)" })
-      .attr("fill", function (d, i) {
-        return "rgb(150, " + (Math.round(dataset[i][sub] * multiplier)) + ", 30)";
-      });
-
-
-
-};
-
-$(document).ready(function() {
-
-  graphDraw("tuition", 0.01);
-  graphDraw("weeks", 10);
-  
-  $('#mapcontainer').children().last().hide();
-
-// show names of BC when hover on bars
-  $('.tick').hide();
-  $('rect').hover( function() {
-    var id = $(this).attr('id');
-    $('#' + id + '_label').closest('.tick').toggle(1000);
-  });
-
-  $("#toggleToHours").click(function() {
-    $('#mapcontainer').children().toggle(700) 
-  });
-
-});
-
-
-
-
-  </script>
-</div>
-
+</script>
 
 <%= link_to("Back to BootCamp Directory", bootcamps_url) %>
 <br />
