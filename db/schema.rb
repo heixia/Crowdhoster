@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131011223626) do
+ActiveRecord::Schema.define(:version => 20131016155108) do
 
   create_table "bootcamps", :force => true do |t|
     t.string   "name"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(:version => 20131011223626) do
     t.float    "lon"
     t.string   "twitter_handle"
     t.text     "description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "slug"
     t.string   "primary_language"
     t.integer  "tuition"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20131011223626) do
     t.integer  "city_index"
     t.integer  "weeks"
     t.string   "notes"
+    t.boolean  "published",        :default => false
   end
 
   create_table "campaigns", :force => true do |t|

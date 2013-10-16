@@ -1,39 +1,10 @@
-<%= form_for @bootcamp do |f| %>
-
-<div class = "field">
-  <%= f.label :name  %>
-  <%= f.text_field :name %>
-</div>
-
-<div class = "field">
-  <%= f.label :website_url %>
-  <%= f.text_field :website_url %>
-</div>
-
-<div class = "field">
-  <%= f.label :twitter_handle %>
-  <%= f.text_field :twitter_handle %>
-</div>  
-
-<div class = "field">
-  <%= f.label :description  %>
-  <%= f.text_area :description %>
-</div>
-
-<div class = "field">
-<%= f.label :languages %>
-<%= f.text_field :language_list %>
-</div>
-
-<div class="actions"><%= f.submit "Submit" %></div>
-<% end %>
 
 <%= simple_form_for @bootcamp do |f| %>
 <%= f.input :name %>
 <%= f.input :website_url %>
 <%= f.input :twitter_handle %>
 <%= f.input :description, as: :text %>
-<%= f.input :language_list %>
+<%= f.input :tag_list %>
 <%= f.submit %>
 <% end %>
 

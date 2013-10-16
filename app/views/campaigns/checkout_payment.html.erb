@@ -1,6 +1,7 @@
-<div id="checkout">
+<div class="row">
+  <div id="checkout">
   <div class="container content_box clearfix">
-    <div class="main_content">
+    <div class="main_content large-9 column">
       <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3>
 
     <div class="well checkout_block" style="padding-bottom: 16px">
@@ -139,13 +140,12 @@
 
         </form>
         <div id="errors" style="display: none"></div>
-
-        <div style="text-align: right; margin-right: -16px"><%= image_tag 'crowdtilt_badge_no_card_logos.png', width: "120px", height: "36px" %></div>
     </div>
 
   </div>
+</div>
 
-    <div class="sidebar">
+    <div class="sidebar large-3 column">
       <div class="crowdtilt-powered clearfix">
         <%= image_tag 'crowdtilt_badge.png', width: "317px", height: "36px" %>
       </div>

@@ -1,13 +1,4 @@
-<div id="checkout">
-  <div class="container content_box clearfix">
-    <div class="row">
-    <div class="main_content large-12 columns">
-      <h3><a href="<%= campaign_home_path(@campaign) %>"><%= @campaign.name %></a></h3>
-    </div>
-  </div>
-  <div class="row">
-      <div class="well checkout_block large-6 columns">
-        <form accept-charset="UTF-8" action="<%= checkout_payment_path(@campaign) %>" method="GET" id="amount_form">
+<form accept-charset="UTF-8" action="<%= checkout_payment_path(@campaign) %>" method="GET" id="amount_form">
 
           <% if @campaign.payment_type == 'fixed' %>
 
@@ -41,6 +32,7 @@
             <br/>
             <div class="amount_input" style="position:relative">
               <input id="amount" type="text" name="amount" value="<%= short_price(@reward.price) if @reward %>"/>&nbsp;&nbsp;
+              <span style="position:absolute">$</span>
             </div>
             <span class="minimum">Minimum is $<%= number_with_precision(@campaign.min_payment_amount, precision: 2) %></span>
             <label class="error hide"></label>
@@ -85,19 +77,6 @@
 
 
           <button type="submit" class="btn btn-primary" id="continue_to_checkout">Continue to checkout</button>
-    
-  
+
         </form>
-      </div>
-
-
-
-    <div class="sidebar large-4 columns">
-      <div class="custom_content">
-        <%= raw(@campaign.checkout_sidebar_content) %>
-      </div>
-    </div>
-  </div>
-
-  </div>
-</div>
+     

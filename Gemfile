@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'letter_opener'
 end
 
 group :development do
@@ -70,3 +71,4 @@ gem 'simple_form'
 gem 'twitter'
 #tags
 gem 'acts-as-taggable-on'
+gem 'mail_form'

@@ -33,13 +33,13 @@ path {
     <h3>United States</h3>
     <h4>West Coast</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.west_coast.each do |camp| %>
+      <% Bootcamp.published.west_coast.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
     <h4>Mountain States</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.mountain.each do |camp| %>
+      <% Bootcamp.published.mountain.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
   </div>
@@ -47,22 +47,22 @@ path {
     <h3>  &nbsp; </h3>
     <h4>Midwest</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.midwest.each do |camp| %>
+      <% Bootcamp.published.midwest.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
     <h4>South/Southwest</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.south.each do |camp| %>
+      <% Bootcamp.published.south.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
-      <% Bootcamp.southwest.each do |camp| %>
+      <% Bootcamp.published.southwest.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
     <h4>East Coast</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.east_coast.each do |camp| %>
+      <% Bootcamp.published.east_coast.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
@@ -71,25 +71,31 @@ path {
     <h3>Canada</h3>
     <h4>Ontario</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.ontario.each do |camp| %>
+      <% Bootcamp.published.ontario.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
     <h4>British Columbia</h4>
     <ul id="bootcamplist">
-      <% Bootcamp.british_columbia.each do |camp| %>
+      <% Bootcamp.published.british_columbia.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
+    <ul id="bootcamplist">
     <h3>Outside North America</h3>
-    <% Bootcamp.rest_of_world.each do |camp| %>
+    <% Bootcamp.published.rest_of_world.each do |camp| %>
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
     <!--  -->
   </div>
 </div>
-<button class="rubyfilter" class="tiny">RUBY</button><button class="jsfilter" class="tiny">JAVASCRIPT</button><button class="allfilter" class="tiny">ALL</button>
+<div class='row'>
+  <div class="large-8 columns centered">
+    <button class="rubyfilter" class="tiny">ruby</button><button class="jsfilter" class="tiny">javascript</button><button class="pythonfilter">python</button><button class="allfilter" class="tiny">all</button>
+  </div>
+</div>
+
 <script>
 // set the size of our map
 var width = 800;
@@ -200,23 +206,23 @@ $(".bootcamp-li").on("mouseout", function(){
 $('.rubyfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='Ruby on Rails']").hide( "drop", { direction: "down" }, "slow" );
+  $('svg circle').not("[data-primary_language='Ruby on Rails']").hide();
   $(".bootcamp-li").not("[data-primary_language='Ruby on Rails']").hide();
-  // $("[data-primary_language='ruby']").show("fade");
+
 
 }); 
 
 $('.jsfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='Javascript']").hide( "drop", { direction: "down" }, "slow" );
+  $('svg circle').not("[data-primary_language='Javascript']").hide();
   $(".bootcamp-li").not("[data-primary_language='Javascript']").hide();
 }); 
 
 $('.pythonfilter').on("click", function() {
   $('svg circle').show();
   $('.bootcamp-li').show();
-  $('svg circle').not("[data-primary_language='Python']").hide( "drop", { direction: "down" }, "slow" );
+  $('svg circle').not("[data-primary_language='Python']").hide();
   $(".bootcamp-li").not("[data-primary_language='Python']").hide();
 }); 
 

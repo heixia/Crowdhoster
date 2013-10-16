@@ -1,17 +1,19 @@
 class BootcampsController < ApplicationController
 
+before_filter :authenticate_user!, only: [:edit, :new, :destroy]
+  
   def index 
-    @bootcamps = Bootcamp.all
+    @bootcamps = Bootcamp.published
     if params[:tag]
-      @bootcamps = Bootcamp.tagged_with(params[:tag])
+      @bootcamps = Bootcamp.published.tagged_with(params[:tag])
     else
-      @bootcamps=Bootcamp.all
+      @bootcamps=Bootcamp.published
     end
   end
 
   def show
     @bootcamp = Bootcamp.find(params[:id])
-    @bootcamps = Bootcamp.all 
+    @bootcamps = Bootcamp.published
   end
 
   def new
