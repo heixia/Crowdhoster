@@ -8,6 +8,10 @@
   box-shadow: inset 0px 1px 3px 0px #acacac;
 
   padding: 40px 0 30px;
+
+  h1,h2,h3,h4 {
+    color:$light_brown;
+  }
   ul {
     float: left;
   }
