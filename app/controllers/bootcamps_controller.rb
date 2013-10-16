@@ -23,7 +23,7 @@ before_filter :authenticate_user!, only: [:edit, :new, :destroy]
   def create
     @bootcamp = Bootcamp.new(params[:bootcamp])
     if @bootcamp.save
-      redirect_to @bootcamp, :notice => "Thanks for adding your bootcamp!"
+      redirect_to @bootcamp, :notice => "Thanks for adding your bootcamp! We'll review the information and get it published shortly!"
     else
       render :action => 'new', :notice => "Oops! That didn't work."
     end
