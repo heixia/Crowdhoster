@@ -28,5 +28,8 @@
 //= require theme
 //= require validate
 //= require event_tracking
+//= require jquery.tipsy
+//= require jquery.pulse
+//= require_tree .
 
 $(function(){ $(document).foundation(); });
