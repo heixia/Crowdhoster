@@ -1,3 +1,5 @@
+@import 'primitives';
+
 //
 // Foundation Variables
 //
@@ -650,14 +652,14 @@ $fieldset-margin: em-calc(18 0);
 
 // We use these to controls height and width styles.
 
-// $f-dropdown-max-width: 200px;
-// $f-dropdown-height: auto;
-// $f-dropdown-max-height: none;
-// $f-dropdown-margin-top: 2px;
+$f-dropdown-max-width: 200px;
+$f-dropdown-height: auto;
+$f-dropdown-max-height: none;
+$f-dropdown-margin-top: 2px;
 
 // We use this to control the background color
 
-// $f-dropdown-bg: #fff;
+$f-dropdown-bg: $dark_grey;
 
 // We use this to set the border styles for dropdowns.
 

@@ -7,16 +7,37 @@
   <div class="row">
     <div class ="main-menu large-12 columns">
       <ul>
-
-        
         <li><%= link_to "About Us", root_path%></li>
-        <li><%= link_to "Scholarships", new_admin_campaign_path  %></li>
-        <li><%= link_to "School Directory", bootcamps_path %></li>
+        <li><a href=# data-dropdown="hover1" data-options="is_hover:true">Scholarships</li>
+          <ul id="hover1" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+          </ul>
+        <li><a href=# data-dropdown="hover2" data-options="is_hover:true"><%= link_to "School Directory", bootcamps_path %></li>
+        <ul id="hover2" class="f-dropdown" data-dropdown-content>
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+          </ul>
         <li><%= link_to "FAQ", root_path %>
       </ul>
     </div>
   </div>
 </div>
 
+<style>
+ul#hover1.f-dropdown.open {
+  background-color: black;
+  padding-top: 5px;
+  border-radius:5px;
 
+}
+
+#hover1.f-dropdown.open li a {
+margin-bottom: 10px;
+margin-top: 5px;
+align: left;
+}
+</style>
 

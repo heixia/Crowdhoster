@@ -27,6 +27,7 @@ gem 'rails_autolink'
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'turbo-sprockets-rails3'
 end
 
 # Gems used only for assets and not required
