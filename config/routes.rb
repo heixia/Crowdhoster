@@ -3,6 +3,8 @@ Crowdhoster::Application.routes.draw do
   get 'tags/:tag',                            to: 'bootcamps#index',                        as: :tag
   resources :scholarships
   get 'statistics',                  to: 'bootcamps#statistics'
+  resources :scholarship_messages, only: [:index, :create]
+  match "add_a_scholarship" => "scholarship_messages#index"
   
   mount Ckeditor::Engine => '/ckeditor'
 

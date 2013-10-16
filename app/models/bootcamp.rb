@@ -1,7 +1,8 @@
 class Bootcamp < ActiveRecord::Base
-  attr_accessible :name, :address, :weeks, :notes, :city, :st_pr, :country, :contact_email, :website_url, :lat, :lon, :twitter_handle, :description, :tag_list, :language_list, :hours, :tuition, :primary_language
+  attr_accessible :name, :address, :weeks, :notes, :city, :st_pr, :country, :contact_email, :website_url, :lat, :lon, :twitter_handle, :description, :tag_list, :language_list, :hours, :tuition, :primary_language, :published
 
   has_many :tweets
+  
   
 
 extend FriendlyId
@@ -11,6 +12,10 @@ acts_as_taggable
 acts_as_taggable_on :tags
 
 scope :by_country, -> country {where(country: country)}
+
+def self.published
+  where(:published => true)
+end
 
 def self.canada
   where(:country => "Canada")
