@@ -1,0 +1,16 @@
+
+<%= simple_form_for @bootcamp do |f| %>
+
+<%= f.input :name, :label => "Program name" %>
+<%= f.input :address %>
+<%= f.input :city %>
+<%= f.input :st_pr, :label => "State/Province" %>
+<%= f.input :contact_email %>
+<%= f.input :website_url %>
+<%= f.input :twitter_handle %>
+<%= f.input :description, as: :text, :label => "Description (1-3 paragraphs please)" %>
+<%= f.input :primary_language, :collection => ["Ruby on Rails", "Javascript", "Python", ".Net", "Other"] %>
+<%= f.input :tag_list, :label => "Other skills taught, comma separated (Sass, Angular, TDD...)" %>
+<%= f.input :notes, as: :text, :label => "Anything else you want us to know?" %>
+<%= f.submit %>
+<% end %>
