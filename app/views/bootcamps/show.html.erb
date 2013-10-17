@@ -1,4 +1,4 @@
-
+subl
 
 <div class="row">
   <div class="large-5 columns"><hr style="border-top: 2px dashed grey; color: #FFFCF4; margin-top:100px; width:90%"></div>
@@ -31,9 +31,10 @@
 
 <div class="row">
   <div id ="contactbox" class="large-4 columns">
-  <h3>Contact</h3>
-  <p><%= @bootcamp.address %>, <%= @bootcamp.city %></p>
-  <p><%= @bootcamp.website_url %></p>
+  <h3>Contact Info</h3>
+  <p id="bcaddress"><%= @bootcamp.address %>, <%= @bootcamp.city %></p>
+  <p id="bclink"><a href=<%= @bootcamp.website_url %>><%= @bootcamp.website_url %></a></p>
+
   </div>
   <div id="gmapbox" class="large-3 columns">
     <a href="http://maps.google.com/?"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@bootcamp.lat},#{@bootcamp.lon}&zoom=15&size=400x400&sensor=false&markers=color:blue%7Clabel:#{@bootcamp.name}%7C#{@bootcamp.lat},#{@bootcamp.lon}&visual_refresh=true" %></a>
