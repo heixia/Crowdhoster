@@ -53,12 +53,14 @@ var rects = svg.selectAll("rect")
     });
     
 
-    
+var color = function(d) { return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)" };    
 
 // add text to show attributes on hover 
 var texts = svg.selectAll("text")
     .data(dataset)
     .enter();
+
+
 
 // name of school
 texts.append("text")
@@ -67,9 +69,7 @@ texts.append("text")
   .attr("y", 25)
   .attr("id", function (d){ return d.slug + "_label"; })
   .attr("class", "xLabels")
-  .attr("fill", function(d) {
-    return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
-  });
+  .attr("fill", color);
 
 // data attribute (tuition, hours etc)
 texts.append("text")
@@ -78,19 +78,15 @@ texts.append("text")
   .attr("y", 50)
   .attr("id", function (d){ return d.slug + "_label2"; })
   .attr("class", "xLabels2")
-  .attr("fill", function(d) {
-    return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
-  });
+  .attr("fill", color); 
 
 texts.append("text")
-  .text(function(d) { return "Approx Cost/Hour: $" + (d.tuition/d.hours).toFixed(2); })
+  .text(function(d) { return "Aprox Cost/Hour: $" + (d.tuition/d.hours).toFixed(2); })
   .attr("x", 15)
   .attr("y", 70)
   .attr("id", function (d){ return d.slug + "_label3"; })
   .attr("class", "xLabels3")
-  .attr("fill", function(d) {
-    return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
-  });
+  .attr("fill", color); 
 
 
 };
