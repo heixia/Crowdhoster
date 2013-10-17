@@ -24,33 +24,53 @@ svg {
   width: 525px;
   height: 350px;
 }
+
+
 </style>
 
 <div class="row">
-  <div class="large-8 columns">
-    <img src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> width="200px" style="float:right">
-      <div class="bootcampbox"><h2><%= @bootcamp.name %></h2>
-
-        <%= @bootcamp.address %>
-        <%= @bootcamp.city %>
-        <%= @bootcamp.website_url %>
-        <%= @bootcamp.twitter_handle %>
-      </div>
+  <div class="large-2 large-centered columns">
+    <img id="bootcamplogo" src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> width="200px">
   </div>
 </div>
+<div class="row">
+  <div class="large-6 columns">
+    <h3><%= @bootcamp.name %></h3>
+    <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur.</p>
+
+<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+    </div>
+  <div class="large-4 columns">
+    <div id="quickfactbox">
+    <h3>Quick Facts</h3>
+    <ul>
+      <li>Primary Language: <%= @bootcamp.primary_language %></li>
+      <li>Tuition: <%= @bootcamp.tuition %></li>
+      <li>Hours: <%= @bootcamp.hours %></li>
+      <h4>Other Topics</h4>
+    <% @bootcamp.tags.each do |t| %>
+      <%= t.name %>
+      <% end %>
+      </div>
+    </div>
+</div>
+
 
 <div class="row">
+  <div id ="contactbox" class="large-4 columns">
+  <h3>Contact</h3>
+  <p><%= @bootcamp.address %>, <%= @bootcamp.city %></p>
+  <p><%= @bootcamp.website_url %></p>
+  </div>
+  <div id="gmapbox" class="large-3 columns">
+    <a href="http://maps.google.com/?"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@bootcamp.lat},#{@bootcamp.lon}&zoom=15&size=400x400&sensor=false&markers=color:blue%7Clabel:#{@bootcamp.name}%7C#{@bootcamp.lat},#{@bootcamp.lon}&visual_refresh=true" %></a>
+  </div>
+
+
   <div id="tweetbox" class="large-4 columns">
     <h4>Recent Tweets</h4>
     <% @bootcamp.tweets.limit(5).each do |tweet| %>
     <p class="tweettext"><%= tweet.status %></p>
-    <% end %>
-  </div>
-
-  <div id="skills" class="large-4 columns">
-    <h3>SKILLS</h3>
-    <% @bootcamp.tags.each do |t| %>
-      <%= t.name %>
     <% end %>
   </div>
 </div>
