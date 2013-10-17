@@ -7,13 +7,13 @@
   <div class="row">
     <div class ="main-menu large-12 columns">
       <ul>
-        <li><%= link_to "About Us", 'about_us' %></li>
-         <li><%= link_to "FAQ", 'faq' %></li>
-          <li><a href=# data-dropdown="hover1" data-options="is_hover:true">Scholarships</li>
-          <ul id="hover1" class="f-dropdown" data-dropdown-content>
-          <li><a href="<%= scholarships_path %>">View scholarships</a></li>
-          <li><a href="<%= scholarship_messages_path %>">Add a scholarship</a></li>
-          </ul>
+          <li><%= link_to "About Us", 'about_us' %></li>
+          <li><%= link_to "FAQ", 'faq' %></li>
+          <li><a href=# data-dropdown="hover1" data-options="is_hover:true">Scholarships</a></li>
+            <ul id="hover1" class="f-dropdown" data-dropdown-content>
+              <li><a href="<%= scholarships_path %>">View scholarships</a></li>
+              <li><a href="<%= scholarship_messages_path %>">Add a scholarship</a></li>
+            </ul>
           <li><a href="<%= bootcamps_path %>" data-dropdown="hover2" data-options="is_hover:true">Programs</a></li>
           <ul id="hover2" class="f-dropdown" data-dropdown-content>
           <li><a href="<%= bootcamps_path %>">Program Directory</a></li>

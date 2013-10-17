@@ -34,8 +34,8 @@
   <h4>Contact Info</h4>
   <p id="bcaddress"><%= @bootcamp.address %>, <%= @bootcamp.city %></p>
   <p id="bclink"><a href=<%= @bootcamp.website_url %>><%= @bootcamp.website_url %></a></p>
-  <a href=#><img src=<%= image_path('webicon-twitter.svg')%>  width="50px"></a>
-  <a href=#><img src=<%= image_path('webicon-mail.svg')%>  width="50px"></a>
+  <a href="http://www.twitter.com/<%= @bootcamp.twitter_handle.gsub("@","") %>"><img src=<%= image_path('webicon-twitter.svg')%>  width="50px"></a>
+  <a href="mailto:<%= @bootcamp.contact_email %>"><img src=<%= image_path('webicon-mail.svg')%>  width="50px"></a>
  
 
   </div>
@@ -44,11 +44,11 @@
   </div>
 
     <div id="tweetbox" class="large-4 columns">
-    <h4>Twitterings <%= @bootcamp.twitter_handle %></h4>
+    <h4 id="twitterings"><%= @bootcamp.twitter_handle %> tweets</h4>
     <% if @bootcamp.tweets.count != 0 %>
-    <% @bootcamp.tweets.limit(5).each do |tweet| %>
-    <p class="tweettext"><%= tweet.status %></p>
-    <% end %>
+    <span id="bigquotes-open">"</span><% @bootcamp.tweets.limit(5).each do |tweet| %>
+    </span><p class="tweettext"><%= h auto_link(tweet.status) %></p>
+    <% end %><span id="bigquotes-close">"</span>
     <% else %>
     <p class="tweettext">Sorry, we dont have any recent tweets for this program.</p>
     <% end %>
@@ -63,3 +63,27 @@
 <button class="small"><%= link_to("Home", root_path)  %></button>
 </div>
 </div>
+
+<style>
+
+#twitterings {margin-bottom:-70px;}
+.tweettext {font-size:.9em;}
+
+#bigquotes-open, #bigquotes-close {
+  font-family:"Times New Roman";
+  font-size:5em;
+  color:green;
+  opacity:.5;
+  display:inline;
+  position:relative;
+  top:-20px;
+}
+
+#bigquotes-open {margin-left:-20px;margin-top:-20px;}
+#bigquotes-close {margin-left:270px;margin-top:-10px;-webkit-transform: rotate(100deg); 
+-moz-transform: rotate(100deg); 
+-o-transform: rotate(100deg);
+-ms-transform: rotate(100deg); 
+};}
+
+</style>

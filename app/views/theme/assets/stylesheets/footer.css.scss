@@ -39,8 +39,8 @@ li.footer-menu {display:inline; list-style: none}
 
 .f-dropdown.open {
   background-color: $dark_grey;
-  border-radius:5px;
-  width:300px;
+  border-radius:10px;
+  min-width:210px;
 
 }
 
