@@ -30,6 +30,8 @@
 //= require event_tracking
 //= require jquery.tipsy
 //= require jquery.pulse
+//= require d3.v3.min
+//= require topojson.v1.min
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
