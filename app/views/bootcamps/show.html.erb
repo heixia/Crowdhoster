@@ -66,11 +66,33 @@ svg {
 <script>
 var dataset = <%= raw(@bootcamps.to_json) %>
 console.log(dataset);
+graphDraw("tuition", 0.01);
+  graphDraw("weeks", 10);
+  $('svg text').hide();
+  $('#mapcontainer').children().last().hide();
+
+// on hover of bar show data 
+  $('rect').hover( function() {
+    var id = $(this).attr('id');
+    $('#' + id + '_label').closest('svg text').toggle();
+  });
+
+
+  $('rect').hover( function() {
+    var id = $(this).attr('id');
+    $('#' + id + '_label2').closest('svg text').toggle();
+  });
+
+// hide the second data set
+
+
+// switch between data attributes
+  $("#toggleToHours").click(function() {
+    $('#mapcontainer').children().toggle(700);
+  });
 </script>
 
 <%= link_to("Back to BootCamp Directory", bootcamps_url) %>
 <br />
 <br /> 
 <%= link_to("Home", root_path)  %>
-
-

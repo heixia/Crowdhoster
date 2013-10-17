@@ -1,7 +1,7 @@
 
 var margin = {top: 10, right: 10, bottom: 10, left: 10};
 var w = 500 - margin.left - margin.right;
-var h = 325 - margin.top - margin.bottom; 
+var h = 325 - margin.top - margin.bottom;
 var barPadding = 2;
 
 // var dataset = <%= raw(@bootcamps.to_json) %>
@@ -22,10 +22,6 @@ var graphDraw = function(sub, multiplier) {
   var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient("top");
-
-// // y axis in $
-//   var y = d3.scale.linear()
-//     .range([height, 0]);
 
 
   var svg = d3.select("#mapcontainer").append("svg")
@@ -49,11 +45,11 @@ var rects = svg.selectAll("rect")
     .attr("fill", function(d) {
       return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
     })
-    .on("mouseover", function(){ 
-      d3.select(this).attr("stroke", "orange")
+    .on("mouseover", function(){
+      d3.select(this).attr("stroke", "orange");
     })
-    .on("mouseout", function(){ 
-      d3.select(this).attr("stroke", "green")
+    .on("mouseout", function(){
+      d3.select(this).attr("stroke", "green");
     });
     
 
@@ -66,22 +62,22 @@ var texts = svg.selectAll("text")
 
 // name of school
 texts.append("text")
-  .text(function(d) { return d.name })
+  .text(function(d) { return d.name;})
   .attr("x", 15)
   .attr("y", 25)
   .attr("id", function (d){ return d.slug + "_label"; })
-  .attr("class", "xLabels") 
+  .attr("class", "xLabels")
   .attr("fill", function(d) {
     return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
   });
 
 // data attribute (tuition, hours etc)
 texts.append("text")
-  .text(function(d) { return "Tuition: $" + d[sub] })
+  .text(function(d) { return "Tuition: $" + d[sub]; })
   .attr("x", 15)
   .attr("y", 50)
   .attr("id", function (d){ return d.slug + "_label2"; })
-  .attr("class", "xLabels2") 
+  .attr("class", "xLabels2")
   .attr("fill", function(d) {
     return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
   });
@@ -93,42 +89,6 @@ texts.append("text")
 $(document).ready(function() {
 
 
-  graphDraw("tuition", 0.01);
-  graphDraw("weeks", 10);
-
-// toggle between datasets
-
-// $('rect').on("click", function() {
-
-// var newData = graphDraw("weeks", 10);
-
-// rects.data(newData)
-//   .transition().duration(1000);
-
-
-
-// });
   
-  $('svg text').hide();
-
-// on hover of bar show data 
-  $('rect').hover( function() {
-    var id = $(this).attr('id');
-    $('#' + id + '_label').closest('svg text').toggle();
-  });
-
-
-  $('rect').hover( function() {
-    var id = $(this).attr('id');
-    $('#' + id + '_label2').closest('svg text').toggle();
-  });
-
-// hide the second data set
-$('#mapcontainer').children().last().hide();
-
-// switch between data attributes
-  $("#toggleToHours").click(function() {
-    $('#mapcontainer').children().toggle(700) 
-  });
 
 });

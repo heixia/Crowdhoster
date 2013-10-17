@@ -32,7 +32,6 @@
             <br/>
             <div class="amount_input" style="position:relative">
               <input id="amount" type="text" name="amount" value="<%= short_price(@reward.price) if @reward %>"/>&nbsp;&nbsp;
-              <span style="position:absolute">$</span>
             </div>
             <span class="minimum">Minimum is $<%= number_with_precision(@campaign.min_payment_amount, precision: 2) %></span>
             <label class="error hide"></label>
@@ -67,7 +66,7 @@
                     <p class="description"><%= reward.description %></p>
                     <p class="delivery">Estimated Delivery: <%= reward.delivery_date %></p>
                   </div>
-                  <a class="reward_edit" href="#" style="<%= 'display:none' unless @reward && @reward.id == reward.id %>">edit</a>
+                  <a class="reward_edit" href="#" style="<%= 'display:none' unless @reward && @reward.id == reward.id %>">Change Reward</a>
                 </li>
               <% end %>
               <% end %>

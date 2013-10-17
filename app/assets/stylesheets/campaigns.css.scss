@@ -1,3 +1,5 @@
+@import 'primitives';
+
 // #checkout {
 //   width: 100%;
 //   padding: 50px 0;
@@ -54,86 +56,86 @@
 //       }
 //     }
 
-//     #reward_select {
-//       ul {
-//         margin-left: 0px;
-//         li {
-//           position: relative;
-//           &.reward_option {
-//             padding: 20px 0px;
-//             border-bottom: 1px solid gray;
-//             opacity: 0.7;
-//             input, label {
-//               display: inline;
-//               float: left;
-//               margin-left: 10px;
-//               font-weight: bold;
-//             }
-//             .reward_description {
-//               margin-left: 120px;
-//               width: 320px;
-//               p {
-//                 font-size: 14px;
-//                 margin: 0px;
-//                 color: #4b4b4b;
-//               }
-//               p.price {
-//                 font-size: 24px;
-//                 font-weight: bold;
-//               }
-//               p.title {
-//                 font-size: 16px;
-//                 font-weight: bold;
-//                 margin-bottom: 12px;
-//               }
-//               p.claimed {
-//                 font-weight: bold;
-//                 margin-bottom: 12px;
-//               }
-//               p.description {
-//                 margin-bottom: 12px;
-//                 line-height: 16px;
-//               }
-//               p.delivery {
-//                 font-size: 12px;
-//               }
-//             }
-//             .reward_edit {
-//               display: block;
-//               position: absolute;
-//               top: 15px;
-//               right: 25px;
-//             }
-//           }
-//           &.active {
-//             opacity: 1;
-//             &:hover {
-//               background-color: #e6e6e6;
-//               cursor: pointer;
-//             }
-//           }
-//           &.selected {
-//             background-color: #e6e6e6;
-//             border-bottom: none;
-//           }
-//         }
-//       }
-//     }
+      #reward_select {
+      ul {
+        margin-left: 0px;
+        li {
+          position: relative;
+          &.reward_option {
+            padding: 20px 0px;
+            border-bottom: 1px solid gray;
+            opacity: 0.7;
+            input, label {
+              display: inline;
+              float: left;
+              margin-left: 10px;
+              font-weight: bold;
+            }
+            .reward_description {
+              margin-left: 120px;
+              width: 320px;
+              p {
+                font-size: 14px;
+                margin: 0px;
+                color: #4b4b4b;
+              }
+              p.price {
+                font-size: 24px;
+                font-weight: bold;
+              }
+              p.title {
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 12px;
+              }
+              p.claimed {
+                font-weight: bold;
+                margin-bottom: 12px;
+              }
+              p.description {
+                margin-bottom: 12px;
+                line-height: 16px;
+              }
+              p.delivery {
+                font-size: 12px;
+              }
+            }
+            .reward_edit {
+              display: block;
+              position: absolute;
+              top: 15px;
+              right: 25px;
+            }
+          }
+          &.active {
+            opacity: 1;
+            &:hover {
+              background-color: #e6e6e6;
+              cursor: pointer;
+            }
+          }
+          &.selected {
+            background-color: #e6e6e6;
+            border-bottom: none;
+          }
+        }
+      }
+    }
 
-//     .btn {
-//       margin-top: 20px;
-//     }
+    .btn {
+      margin-top: 20px;
+    }
 
-//     h4 {
-//       margin-top: 20px;
-//       i {
-//         margin-top: 6px;
-//       }
-//     }
+    h4 {
+      margin-top: 20px;
+      i {
+        margin-top: 6px;
+      }
+    }
 
-//     h4.contact {
-//       margin-top: 0px;
-//     }
+    h4.contact {
+      margin-top: 0px;
+    }
 
     fieldset {
       display: inline-block;
@@ -226,15 +228,26 @@
 //     margin-top: 30px;
 //   }
 
-//   .confirmation_sidebar {
-//     float: left;
-//     background: white;
-//     margin-left: 20px;
-//     width: 315px;
-//     p {
-//       font-size: 14px;
-//     }
-//   }
-// }
+  .confirmation_sidebar {
+    float: left;
+    background: white;
+    margin-left: 20px;
+    width: 315px;
+    p {
+      font-size: 14px;
+    }
+  }
+
+
+.reward_description  {
+  
+  
+}
+
+#reward_select {
+  background-color:$light_brown;
+  margin: 10px;
+  padding: 10px;
+}
 
 
