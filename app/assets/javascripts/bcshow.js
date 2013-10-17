@@ -41,7 +41,7 @@ var rects = svg.selectAll("rect")
     .attr("transform", "translate(20,0)")
     .attr("id", function(d){ return d.slug; })
     .attr("width", w / dataset.length - barPadding*2)
-    .attr("height", function(d) { return d[sub] * multiplier ;})
+    .attr("height", function(d) { return (d[sub]+2000) * multiplier ;})
     .attr("fill", function(d) {
       return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
     })
@@ -82,6 +82,15 @@ texts.append("text")
     return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
   });
 
+texts.append("text")
+  .text(function(d) { return "Approx Cost/Hour: $" + (d.tuition/d.hours).toFixed(2); })
+  .attr("x", 15)
+  .attr("y", 70)
+  .attr("id", function (d){ return d.slug + "_label3"; })
+  .attr("class", "xLabels3")
+  .attr("fill", function(d) {
+    return "rgb(150, " + (Math.round(d[sub] * multiplier)) + ", 30)";
+  });
 
 
 };
@@ -89,6 +98,6 @@ texts.append("text")
 $(document).ready(function() {
 
 
-  
+
 
 });

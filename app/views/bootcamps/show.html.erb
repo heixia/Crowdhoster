@@ -83,6 +83,11 @@ graphDraw("tuition", 0.01);
     $('#' + id + '_label2').closest('svg text').toggle();
   });
 
+    $('rect').hover( function() {
+    var id = $(this).attr('id');
+    $('#' + id + '_label3').closest('svg text').toggle();
+  });
+
 // hide the second data set
 
 
