@@ -5,7 +5,7 @@ class ScholarshipMessagesController < ApplicationController
   end
 
   def create
-    mail = ScholarshipMessage.new(params[:contact_form])
+    mail = ScholarshipMessage.new(params[:scholarship_message])
     if mail.deliver
       redirect_to root_path, :notice => 'Email has been sent.'
     else

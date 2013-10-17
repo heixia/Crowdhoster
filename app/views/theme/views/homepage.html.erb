@@ -5,14 +5,14 @@
   <div class="container clearfix">
     
       <div class="row">
-      <div class="homepage_content clearfix large-5 columns">
-        <h3>Header Text</h3>
-        <p>Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-        <p>Donec sed odio dui. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-        <p>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper.</p>
-      </div>
-    <div class="campaigns large-6 columns" style="padding-left:3px">
-      <h3>Header Text</h3>
+      <div class="homepage_content clearfix large-6 columns">
+      
+<h3>Crowdfunding the next generation of developers</h3>
+<p>Devocracy helps you find and fund scholarships for development bootcamps.</p> <p>If you're a development bootcamp, creating a scholarship can help you offer tuition assistance to the students you believe can succeed in your program. </p> <p> We believe that crowdfunded scholarships can be one tool among many to bring people with more diverse backgrounds into the IT sector. In the future, we would like to allow any student to create a scholarship, as well as offer sponsored scholarships from companies looking for tech employees with specific domain skillsets.</p>
+<p>We believe that <a href="https://gist.github.com/sferik/5277512">software is eating the world</a> Devocracy exists to put technical skills into the hands of those could otherwise be left behind.
+</div>
+    <div class="campaigns large-4 columns" style="padding-left:3px">
+      <h3>Featured Campaigns</h3>
       <% if @campaigns.count > 0 %>
         <% @campaigns.each do |campaign| %>
           <% if campaign.published_flag && !campaign.expired? %>
@@ -83,6 +83,17 @@
       <% end %>
     </div>
   </div>
+  <div class="row">
+  <h3 id="howitworks">How It Works</h3>
+  <div class="large-4 columns"><h4>Programs create a scholarship</h4>
+<p>Representatives of software training programs programs fill out a form. They include a description, a goal funding amount, and a deadline. We contact the bootcamp directly for confirmation and get some more information from them. Then we create the scholarship. (In the future we hope to allow anyone to create a scholarship)</p></div>
+  <div class="large-4 columns"><h4>We pitch in to fund it</h4>
+<p>At the heart of Devocracy is democratic funding. All of us pitch in to fund the scholarships we believe in by pledging an amount of our choice. Once the scholarship meets its goal amount, each person who has pledged to it gets charged.
+
+If a scholarship doesn't meet its goal amount, then no one gets charged at all. We encourage you to share the scholarship you've supported with your friends and family</p>.</div>
+  <div class="large-4 columns"><h4>Bootcamps select an applicant</h4>
+<p>Once the scholarship goal has been met, the bootcamp that created it selects an applicant to receive the scholarship. We encourage bootcamps to take a picture with their newly accepted student and post it for supporters to see. In the future we will offer updates from scholarship recipients to their funders.</p></div>
+  
 </div>
 
 <style>

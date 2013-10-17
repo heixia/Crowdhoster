@@ -1,14 +1,16 @@
 class ScholarshipMessage < MailForm::Base
-  attribute :name,          :validate => true
-  attribute :email,         :validate => true
-  attribute :message_title, :validate => true
-  attribute :message_body,  :validate => true
+  attribute :name          
+  attribute :title
+  attribute :program
+  attribute :email
+  attribute :message_body
+
 
   def headers
     {
-      :subject => "#{message_title}",
+      :subject => "Funding A Scholarship",
       :to => "devocracyorg@gmail.com",
-      :from => %("#{name}" <#{email}>)
+      :from => "A potential funder"
     }
   end
 

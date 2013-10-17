@@ -1,6 +1,6 @@
 class BootcampsController < ApplicationController
 
-before_filter :authenticate_user!, only: [:edit, :new, :destroy]
+before_filter :authenticate_user!, only: [:edit, :destroy]
   
   def index 
     @bootcamps = Bootcamp.published
@@ -23,7 +23,9 @@ before_filter :authenticate_user!, only: [:edit, :new, :destroy]
   def create
     @bootcamp = Bootcamp.new(params[:bootcamp])
     if @bootcamp.save
-      redirect_to @bootcamp, :notice => "Thanks for adding your bootcamp! We'll review the information and get it published shortly!"
+      message=ScholarshipMessage.new(:message_body => "A new bootcamp has been created")
+      message.deliver
+      redirect_to bootcamps_path, :notice => "Thanks for adding your bootcamp! We'll review the information and get it published shortly!"
     else
       render :action => 'new', :notice => "Oops! That didn't work."
     end

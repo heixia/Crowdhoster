@@ -1,7 +1,8 @@
 <%= simple_form_for :scholarship_message, url: scholarship_messages_path do |f| %>
 <%= f.input :name %>
 <%= f.input :email %>
-<%= f.input :message_title %>
+<%= f.input :title %>
+<%= f.input :program %>
 <%= f.input :message_body, as: :text %>
 <%= f.submit %>
 <% end %>

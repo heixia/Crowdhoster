@@ -7,18 +7,17 @@
   <div class="row">
     <div class ="main-menu large-12 columns">
       <ul>
-        <li><%= link_to "About Us", root_path%></li>
-         <li><%= link_to "FAQ", root_path %></li>
+        <li><%= link_to "About Us", 'about_us' %></li>
+         <li><%= link_to "FAQ", 'faq' %></li>
           <li><a href=# data-dropdown="hover1" data-options="is_hover:true">Scholarships</li>
           <ul id="hover1" class="f-dropdown" data-dropdown-content>
-          <li><a href="#">View scholarships</a></li>
-          <li><a href="#">Add a scholarship</a></li>
-          <li><a href="#">Yet another</a></li>
+          <li><a href="<%= scholarships_path %>">View scholarships</a></li>
+          <li><a href="<%= scholarship_messages_path %>">Add a scholarship</a></li>
           </ul>
-        <li><a href=# data-dropdown="hover2" data-options="is_hover:true">Bootcamps</li>
-        <ul id="hover2" class="f-dropdown" data-dropdown-content>
-          <li><a href="#">Bootcamp Directory</a></li>
-          <li><a href="#">Add a bootcamp</a></li>
+          <li><a href="<%= bootcamps_path %>" data-dropdown="hover2" data-options="is_hover:true">Programs</a></li>
+          <ul id="hover2" class="f-dropdown" data-dropdown-content>
+          <li><a href="<%= bootcamps_path %>">Program Directory</a></li>
+          <li><a href="<%= new_bootcamp_path %>">Add a Program</a></li>
           </ul>
        
       </ul>

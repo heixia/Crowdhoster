@@ -1,10 +1,16 @@
 Crowdhoster::Application.routes.draw do
+  get "site/about_us"
+
+  get "site/faq"
+
   resources :bootcamps
   get 'tags/:tag',                            to: 'bootcamps#index',                        as: :tag
   resources :scholarships
   get 'statistics',                  to: 'bootcamps#statistics'
   resources :scholarship_messages, only: [:index, :create]
   match "add_a_scholarship" => "scholarship_messages#index"
+  match "faq" => "site#faq"
+  match "about_us" => "site#about_us"
   
   mount Ckeditor::Engine => '/ckeditor'
 

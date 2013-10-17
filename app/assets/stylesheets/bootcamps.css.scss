@@ -16,8 +16,22 @@
 
 .bootcamp-list{margin-top:5px;padding-top:20px;border-top:2px dashed $dark-grey;}
 
-#bootcamplogo {width:300px; margin: 25px auto; border-radius:10px; padding:10px;background-color:$off_white}
+#bootcamplogo {width:300px; margin: 25px auto; border-radius:100px; padding:10px;background-color:$off_white}
 #bootcamplogo img {}
 
 #quickfactbox {background-color:$light_brown; border-radius:5px; text-align: center}
 #gmapbox img {border-radius:10px; width:200px; box-shadow: 1px 1px 10px $dark_grey}
+#bclink a{
+  color:$lime_green;
+}
+#bclink a:hover {
+  color:$orange
+}
+
+button {margin-top:25px;}
+button a{
+  color: $orange;
+  padding:25px;
+  text-transform:lowercase;
+}
+
