@@ -1,9 +1,11 @@
 
 
 <div class="row">
-  <div class="large-2 large-centered columns">
-    <img id="bootcamplogo" src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> width="200px">
-  </div>
+  <div class="large-5 columns"><hr style="border-top: 2px dashed grey; color: #FFFCF4; margin-top:100px; width:90%"></div>
+    <div class="large-2 columns">
+      <img id="bootcamplogo" src=<%= image_path(@bootcamp.name.downcase.gsub(" ", "-")+'.png') %> style="margin-left:-15px" >
+    </div>
+  <div class="large-5 columns"><hr style="border-top: 2px dashed grey; height:75px; margin-top:100px; color:#FFFCF4"></div>
 </div>
 <div class="row">
   <div class="large-6 columns">
@@ -13,12 +15,11 @@
 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
     </div>
   <div class="large-4 columns">
-    <div id="quickfactbox">
+    <div id="quickfactbox" style="padding:15px">
     <h3>Quick Facts</h3>
-    <ul>
-      <li>Primary Language: <%= @bootcamp.primary_language %></li>
-      <li>Tuition: <%= @bootcamp.tuition %></li>
-      <li>Hours: <%= @bootcamp.hours %></li>
+    <br>Primary Language: <%= @bootcamp.primary_language %>
+    <br>Tuition: <%= h number_to_currency @bootcamp.tuition, :precision => 0 %>
+    <br>Hours: <%= @bootcamp.hours %>
       <h4>Other Topics</h4>
     <% @bootcamp.tags.each do |t| %>
       <%= t.name %>

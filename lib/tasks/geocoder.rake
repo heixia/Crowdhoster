@@ -19,9 +19,14 @@ class Geocoder
     bootcamp.lon=geocode["results"].first["geometry"]["location"]["lng"]
     bootcamp.save!
     rescue
+    bootcamp.lat=0
+    bootcamp.lon=0
+    end
     bootcamp.save!
     end
     puts "#{bootcamp.name} set to #{bootcamp.lat} #{bootcamp.lon}\n"
     end
+    @cities=Bootcamp.all.map { |camp| camp.city}
+    @cities.each {|city| Bootcamp.num_in_city_index(city)}
   end
 end
