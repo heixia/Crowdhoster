@@ -1,32 +1,4 @@
-<style>
 
-svg text {
-  font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
-  font-size: 18px;
-  font-weight: 100;
-  font-style: 1em;
-  letter-spacing: 1.5px;
-}
-
-.xLabels {
-  font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
-  font-size: 30px;
-  font-weight: 100;
-  font-style: 1em;
-  letter-spacing: 1.5px;
-}
-#mapcontainer {
-  width: 550px;
-  height: 375px;
-}
-
-svg {
-  width: 525px;
-  height: 350px;
-}
-
-
-</style>
 
 <div class="row">
   <div class="large-2 large-centered columns">
@@ -75,47 +47,7 @@ svg {
   </div>
 </div>
 
-<div class="row">
-<div id="mapcontainer" class="large-12 columns"></div>
-</div>
-<button type="button" id="toggleToHours">Toggle</button>
-<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="/assets/bcshow.js"></script>
-
-
-<script>
-var dataset = <%= raw(@bootcamps.to_json) %>
-console.log(dataset);
-graphDraw("tuition", 0.01);
-  graphDraw("weeks", 10);
-  $('svg text').hide();
-  $('#mapcontainer').children().last().hide();
-
-// on hover of bar show data 
-  $('rect').hover( function() {
-    var id = $(this).attr('id');
-    $('#' + id + '_label').closest('svg text').toggle();
-  });
-
-
-  $('rect').hover( function() {
-    var id = $(this).attr('id');
-    $('#' + id + '_label2').closest('svg text').toggle();
-  });
-
-    $('rect').hover( function() {
-    var id = $(this).attr('id');
-    $('#' + id + '_label3').closest('svg text').toggle();
-  });
-
-// hide the second data set
-
-
-// switch between data attributes
-  $("#toggleToHours").click(function() {
-    $('#mapcontainer').children().toggle(700);
-  });
-</script>
+<
 
 <%= link_to("Back to BootCamp Directory", bootcamps_url) %>
 <br />

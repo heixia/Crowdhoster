@@ -1,6 +1,50 @@
 <h1>Statistics</h1>
-<div id="statsbox"></div>
+<div class="row">
+<div id="statsbox1" class="large-12 columns"></div>
+<button type="button" id="toggleToHours">Toggle</button>
+</div>
+<div class="row">
+<div id="statsbox2" class="large-12 columns"></div>
+
+
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="/assets/bcshow.js"></script>
+
+
+<script>
+var dataset = <%= raw(@bootcamps.to_json) %>
+console.log(dataset);
+graphDraw("tuition", 0.01);
+graphDraw("weeks", 10);
+  $('svg text').hide();
+  $('#statsbox1').children().last().hide();
+
+// on hover of bar show data 
+  $('rect').hover( function() {
+    var id = $(this).attr('id');
+    $('#' + id + '_label').closest('svg text').toggle();
+  });
+
+
+  $('rect').hover( function() {
+    var id = $(this).attr('id');
+    $('#' + id + '_label2').closest('svg text').toggle();
+  });
+
+    $('rect').hover( function() {
+    var id = $(this).attr('id');
+    $('#' + id + '_label3').closest('svg text').toggle();
+  });
+
+// hide the second data set
+
+
+// switch between data attributes
+  $("#toggleToHours").click(function() {
+    $('#statsbox1').children().toggle(700);
+  });
+</script>
+
 <script>
 
 var dataset = <%= raw(@bootcamps.to_json) %> ;
@@ -9,7 +53,7 @@ var dataset = <%= raw(@bootcamps.to_json) %> ;
 var svgw = 900
 var svgh = 900
 
-var svg = d3.select("#statsbox")
+var svg = d3.select("#statsbox2")
         .append("svg")
         .attr("width", svgw)
         .attr("height", svgh);
@@ -18,7 +62,7 @@ svg.selectAll("circle")
    .data(dataset)
    .enter()
    .append("circle")
-   .attr("cx", function(d, index) { return d.hours/2 })
+   .attr("cx", function(d, index) { return d.hours })
    .attr("cy", function(d) { return d.tuition/100; })
    .attr("r", 20)
    .attr("data-primary_language", function(d){
@@ -26,9 +70,42 @@ svg.selectAll("circle")
    })
    .attr("opacity", ".5");
 
-$("[data-primary_language='ruby']").attr("fill", "red")
-$("[data-primary_language='javascript']").attr("fill", "blue")
+$("[data-primary_language='Ruby on Rails']").attr("fill", "red")
+$("[data-primary_language='Javascript']").attr("fill", "blue")
 
 
 </script>
+
+<style>
+
+svg text {
+  font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
+  font-size: 18px;
+  font-weight: 100;
+  font-style: 1em;
+  letter-spacing: 1.5px;
+}
+
+.xLabels {
+  font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
+  font-size: 30px;
+  font-weight: 100;
+  font-style: 1em;
+  letter-spacing: 1.5px;
+}
+#statsbox1 {
+  width: 550px;
+  height: 375px;
+}
+
+svg {
+  width: 525px;
+  height: 350px;
+}
+
+
+</style>
+
+
+
 

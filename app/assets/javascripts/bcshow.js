@@ -24,7 +24,7 @@ var graphDraw = function(sub, multiplier) {
     .orient("top");
 
 
-  var svg = d3.select("#mapcontainer").append("svg")
+  var svg = d3.select("#statsbox1").append("svg")
     .attr("width", w)
     .attr("height", h)
     .attr("padding", 20)

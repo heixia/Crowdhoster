@@ -49,7 +49,7 @@ before_filter :authenticate_user!, only: [:edit, :new, :destroy]
   end
 
   def statistics
-    @bootcamps=Bootcamp.all
+    @bootcamps=Bootcamp.published
 
     respond_to do |format|
       format.html 
