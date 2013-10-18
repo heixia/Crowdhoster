@@ -111,7 +111,7 @@ var g = svg.append("g");
 
 
 // load and display the world, draws the map for us.
-d3.json("<%= "#{asset_path "world.json"}" %>", function(error, topology) {
+d3.json("statistics/world.json", function(error, topology) {
     g.selectAll("path")
         .data(topojson.feature(topology, topology.objects.countries)
             .features)
