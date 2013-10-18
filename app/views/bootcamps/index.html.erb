@@ -142,8 +142,7 @@ g.append("circle")
     .attr("cx", coords[0]+((2-ci)*10))
     .attr("cy", coords[1]+((2-ci)*5))
     .attr("r", 3)
-    .attr("fill", "url(image<%= index %>)")
-    .attr("fill", "#74E149")
+    .attr("fill", "orange")
     .attr("stroke", "white")
     .attr("stroke-width", 0.25)
     .on("mouseover", function(){ 
@@ -155,7 +154,7 @@ g.append("circle")
      .on("mouseout", function(){ 
       d3.select(this)
          .transition().attr("r", 3)
-         .style("fill", "#74E149");
+         .style("fill", "orange");
      })
      
 
