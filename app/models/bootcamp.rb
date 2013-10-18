@@ -74,9 +74,12 @@ def self.midwest
 end
 
 def self.rest_of_world
-  where("country != ? and country != ?", "USA", "Canada")
+    where("country NOT IN ('USA', 'Canada') AND city NOT IN ('online', 'Online')")
 end
 
+def self.online
+  where(:city => %W(online Online))
+end
 
 
 

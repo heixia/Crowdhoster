@@ -76,6 +76,12 @@ path {
         <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
       <% end %>
     </ul>
+    <ul id="bootcamplist">
+    <h3>Online</h3>
+    <% Bootcamp.published.online.each do |camp| %>
+        <li class="bootcamp-li" id="<%= camp.name.gsub(" ","-").downcase %>link" data-primary_language="<%= camp.primary_language %>"><%= link_to("#{camp.name}", camp )  %></li>
+      <% end %>
+    </ul>
     <!--  -->
   </div>
 </div>
