@@ -40,7 +40,7 @@
 
   </div>
   <div id="gmapbox" class="large-3 columns">
-    <a href="http://maps.google.com/?"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@bootcamp.lat},#{@bootcamp.lon}&zoom=15&size=400x400&sensor=false&markers=color:blue%7Clabel:#{@bootcamp.name}%7C#{@bootcamp.lat},#{@bootcamp.lon}&visual_refresh=true" %></a>
+    <a href="http://maps.google.com/?q=<%= @bootcamp.address %>,<%= @bootcamp.city %>,<%= @bootcamp.st_pr %>"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@bootcamp.lat},#{@bootcamp.lon}&zoom=15&size=400x400&sensor=false&markers=color:blue%7Clabel:#{@bootcamp.name}%7C#{@bootcamp.lat},#{@bootcamp.lon}&visual_refresh=true" %></a>
   </div>
 
     <div id="tweetbox" class="large-4 columns">
