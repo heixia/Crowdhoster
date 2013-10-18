@@ -11,6 +11,7 @@ Crowdhoster::Application.routes.draw do
   match "add_a_scholarship" => "scholarship_messages#index"
   match "faq" => "site#faq"
   match "about_us" => "site#about_us"
+  match "statistics/world" => 'bootcamps#world'
   
   mount Ckeditor::Engine => '/ckeditor'
 

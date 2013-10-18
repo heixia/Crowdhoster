@@ -59,4 +59,11 @@ before_filter :authenticate_user!, only: [:edit, :destroy]
     end
   end  
 
+  def world
+    respond_to do |format|
+      format.html 
+      format.json 
+    end
+  end
+
 end

@@ -1,5 +1,5 @@
 class Bootcamp < ActiveRecord::Base
-  attr_accessible :name, :address, :weeks, :notes, :city, :st_pr, :country, :contact_email, :website_url, :lat, :lon, :twitter_handle, :description, :tag_list, :language_list, :hours, :tuition, :primary_language, :published
+  attr_accessible :name, :address, :weeks, :notes, :city, :st_pr, :country, :contact_email, :website_url, :lat, :lon, :twitter_handle, :description, :tag_list, :language_list, :hours, :tuition, :primary_language, :published, :hours_per_week
 
   has_many :tweets
   

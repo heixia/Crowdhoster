@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016155108) do
+ActiveRecord::Schema.define(:version => 20131018005247) do
 
   create_table "bootcamps", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20131016155108) do
     t.integer  "weeks"
     t.string   "notes"
     t.boolean  "published",        :default => false
+    t.integer  "hours_per_week"
   end
 
   create_table "campaigns", :force => true do |t|
