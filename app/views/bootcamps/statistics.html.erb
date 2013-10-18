@@ -1,7 +1,8 @@
-<h1>Statistics</h1>
+<h1>Interactive Statistics</h1>
+<h3>Cursor over elements to learn more.</h3>
+
 <div class="row">
 <div id="statsbox1" class="large-12 columns"></div>
-<button type="button" id="toggleToHours">Toggle</button>
 </div>
 <div class="row">
 <div id="statsbox2" class="large-12 columns"></div>
@@ -11,15 +12,160 @@
 <script type="text/javascript" src="/assets/bcshow.js"></script>
 
 
-<script>
+<script type="text/javascript">
+
 var dataset = <%= raw(@bootcamps.to_json) %>
+
 console.log(dataset);
+
+var width = 500;
+var height = 500;
+var padding = 10;
+  
+var color = function(d) { return "rgb(150, " + (Math.round((d.tuition/d.hours) * 25)) + ", 30)" };    
+
+// var yScale = d3.scale.linear()
+//     .range([height, 0]);
+var xSp = d3.scale.linear()
+          .domain([300, 600]) 
+          .range([ 25, 700 ]);      
+
+var ySp = d3.scale.linear()
+          .domain([500, 20000])
+          .range([ 400, 0 ]);
+
+var svg = d3.select("#statsbox2")
+    .append("svg")
+    .attr("id", "svgScatter")
+    .attr("width", width)
+    .attr("height", height);
+
+
+
+
+svg.selectAll("circle")
+    .data(dataset)
+    .enter()
+    .append("circle")
+    .attr("cx", function(d) { return xSp(d.hours); })
+    .attr("cy", function(d) { return ySp(d.tuition); })
+    .attr("r", function(d) { 
+      return (d.tuition*d.hours*0.000002).toFixed(1); 
+    })
+    .attr("data-primary_language", function(d){ 
+      return d.primary_language; 
+    })
+    .attr("data-name", function(d){ 
+      return d.name; 
+    })
+    .attr("data-city", function(d){ 
+      return d.city; 
+    })
+    .attr("id", function(d){ return d.slug; })
+    .attr("opacity", ".5")
+    .attr("fill", color);
+
+
+// svg.selectAll("circle")
+//     .data(dataset)
+//     .enter()
+//     .append("text")
+//     .attr("text-anchor", "right")
+
+//     .attr("x", function(d) { 
+//       return xSp(d.hours);
+//     })
+//     .attr("y", function(d) { 
+//       return ySp(d.tuition); 
+//     });
+
+// draw axes 
+var xAxis = d3.svg.axis()
+      .scale(xSp)
+      .orient("bottom");
+    
+var yAxis = d3.svg.axis()
+      .scale(ySp)
+      .orient("left");
+
+svg.append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(25, 0)")
+  .call(yAxis);
+
+svg.append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(0, 350)")
+  .call(xAxis);
+
+
+// axes labels
+svg.append("text")
+  .attr("class", "scatlabel")
+  .attr("text-anchor", "right")
+  .attr("x", 30)
+  .attr("y", 345)
+  .text("Total Hours of Study");
+
+svg.append("text")
+  .attr("class", "scatlabel")
+  .attr("text-anchor", "end")
+  .attr("y", 30)
+  .attr("dy", "0.75em")
+  .attr("transform", "rotate(-90)")
+  .text("Enrolment Fee");
+
+// draw legend
+
+var languages = [
+
+  ["Ruby on Rails", "#CC3300"], 
+  ["Python",        "#366E9E"],
+  ["Javascript",    "#F0DB4F"],
+  ["iOS",           "#A5A5A5"]
+
+]
+
+var legend = svg.selectAll(".legend")
+  .data(languages)
+  .enter()
+  .append("g")
+  .attr("class", "legend")
+  .attr("transform", function(d, i) { 
+    return "translate(0," + i * 20 + ")"; 
+  });
+
+// draw legend colored rectangles
+legend.append("rect")
+  .attr("class", "legbox")
+  .attr("opacity", ".5")
+  .attr("x", 100)
+  .attr("width", 13)
+  .attr("height", 13)
+  .style("fill", function(d, i) { return d[1]; });
+
+// draw legend text
+legend.append("text")
+  .attr("class", "leglabel")
+  .attr("x", 115)
+  .attr("y", 6)
+  .attr("dy", ".35em")
+  .text(function(d, i) { return d[0]; });
+
+</script>
+
+<script>
+
 graphDraw("tuition", 0.01);
 graphDraw("weeks", 10);
+
+// hide and show on load
   $('svg text').hide();
+  $('.scatlabel').show();
+  $('.leglabel').show();
   $('#statsbox1').children().last().hide();
 
-// on hover of bar show data 
+// on hover events 
   $('rect').hover( function() {
     var id = $(this).attr('id');
     $('#' + id + '_label').closest('svg text').toggle();
@@ -31,50 +177,35 @@ graphDraw("weeks", 10);
     $('#' + id + '_label2').closest('svg text').toggle();
   });
 
-    $('rect').hover( function() {
+  $('rect').hover( function() {
     var id = $(this).attr('id');
     $('#' + id + '_label3').closest('svg text').toggle();
   });
 
-// hide the second data set
+
+ $('circle').tipsy({ 
+        gravity: 's', 
+        fade:true,
+        fallback:"bootcamp",
+        html: true, 
+        title: function() {
+          name = $(this).attr("data-name")
+          city = $(this).attr("data-city")
+          return name+"<br/>("+city+")"
+        }
+});
+
+// set color of circles based on prim language taught
+$("[data-primary_language=Javascript]").attr("fill", "#F0DB4F");
+$("[data-primary_language=Python]").attr("fill", "#366E9E");
+$("[data-primary_language='Ruby on Rails']").attr("fill", "#CC3300");
+$("[data-primary_language=iOS]").attr("fill", "#A5A5A5");
 
 
-// switch between data attributes
-  $("#toggleToHours").click(function() {
-    $('#statsbox1').children().toggle(700);
-  });
-</script>
-
-<script>
-
-var dataset = <%= raw(@bootcamps.to_json) %> ;
-
-
-var svgw = 900
-var svgh = 900
-
-var svg = d3.select("#statsbox2")
-        .append("svg")
-        .attr("width", svgw)
-        .attr("height", svgh);
-
-svg.selectAll("circle")
-   .data(dataset)
-   .enter()
-   .append("circle")
-   .attr("cx", function(d, index) { return d.hours })
-   .attr("cy", function(d) { return d.tuition/100; })
-   .attr("r", 20)
-   .attr("data-primary_language", function(d){
-    return d.primary_language
-   })
-   .attr("opacity", ".5");
-
-$("[data-primary_language='Ruby on Rails']").attr("fill", "red")
-$("[data-primary_language='Javascript']").attr("fill", "blue")
 
 
 </script>
+
 
 <style>
 
@@ -86,14 +217,7 @@ svg text {
   letter-spacing: 1.5px;
 }
 
-.xLabels {
-  font-family: "American Typewriter", "American Typewriter", "Helvetica Neue";
-  font-size: 30px;
-  font-weight: 100;
-  font-style: 1em;
-  letter-spacing: 1.5px;
-}
-#statsbox1 {
+#statsbox1, #statsbox2  {
   width: 550px;
   height: 375px;
 }
@@ -104,8 +228,19 @@ svg {
 }
 
 
-</style>
+.scatlabel, .leglabel {
+  font-size: 15px;
+  font-weight: 100;
+  font-style: 1em;
+}
 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+</style>
 
 
 
