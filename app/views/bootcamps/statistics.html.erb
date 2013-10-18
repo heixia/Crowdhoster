@@ -14,12 +14,12 @@
 
 <script type="text/javascript">
 
-var dataset = <%= raw(@bootcamps.to_json) %>
+var dataset = <%= raw(@bootcamps.to_json(:except => :description)) %>
 
 console.log(dataset);
 
 var width = 500;
-var height = 500;
+var height = 600;
 var padding = 10;
   
 var color = function(d) { return "rgb(150, " + (Math.round((d.tuition/d.hours) * 25)) + ", 30)" };    
@@ -27,11 +27,11 @@ var color = function(d) { return "rgb(150, " + (Math.round((d.tuition/d.hours) *
 // var yScale = d3.scale.linear()
 //     .range([height, 0]);
 var xSp = d3.scale.linear()
-          .domain([300, 600]) 
+          .domain([280, 2000]) 
           .range([ 25, 700 ]);      
 
 var ySp = d3.scale.linear()
-          .domain([500, 20000])
+          .domain([200, 25000])
           .range([ 400, 0 ]);
 
 var svg = d3.select("#statsbox2")
@@ -95,7 +95,7 @@ svg.append("g")
 
 svg.append("g")
   .attr("class", "axis")
-  .attr("transform", "translate(0, 350)")
+  .attr("transform", "translate(0, 340)")
   .call(xAxis);
 
 
@@ -103,8 +103,8 @@ svg.append("g")
 svg.append("text")
   .attr("class", "scatlabel")
   .attr("text-anchor", "right")
-  .attr("x", 30)
-  .attr("y", 345)
+  .attr("x", 350)
+  .attr("y", 335)
   .text("Total Hours of Study");
 
 svg.append("text")
@@ -113,7 +113,7 @@ svg.append("text")
   .attr("y", 30)
   .attr("dy", "0.75em")
   .attr("transform", "rotate(-90)")
-  .text("Enrolment Fee");
+  .text("Enrollment Fee");
 
 // draw legend
 
