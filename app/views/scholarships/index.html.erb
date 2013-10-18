@@ -2,35 +2,23 @@
 <div class="large-12 columns">
 <% @scholarships.each do |scholarship| %>
   <% if scholarship.published_flag && !scholarship.expired? %>
-    <div class="scholarbox"><h3>
-    <a href="<%= url_for campaign_home_path(scholarship) %>" class="campaign clearfix">
-      <h3><%= scholarship.name %></h3></a>
-      <%= scholarship.main_content %>
-    
-
-
-  </div>
+    <div class="scholarbox">
+    <h3><a href="<%= url_for campaign_home_path(scholarship) %>" class="campaign clearfix">
+      <%= scholarship.name %></h3></a>
+      <%= raw(scholarship.main_content) %>
+      </div>
   <% end %>
 <% end %>
 </div>
 </div>
 
-<div class="row">
-<div class="large-12 columns">
-<h2>PAST SCHOLARSHIPS</h2>
-<% @scholarships.each do |scholarship| %>
-  <% if scholarship.expired? %>
-    <div class="scholarbox"><h3><%= scholarship.name %></h3></div>
-  <% end %>
-<% end %>
-</div>
-</div>
+
 
       
 <style>
 
 .scholarbox{
-  width:250px;
+  width:50%;
   float:left;
   padding:25px;
 }

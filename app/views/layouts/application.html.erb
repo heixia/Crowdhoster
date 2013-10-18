@@ -25,14 +25,23 @@
       <%= yield %>
     </div>
     <%= render 'theme/views/footer' %>
-
+    
     <div id="powered">
       
-      &nbsp;&nbsp;Built on <a href="http://www.crowdhoster.com">Crowdhoster</a> and Rails at <a href="http://www.bitmakerlabs.com">Bitmaker Labs</a>
+      &nbsp;&nbsp;Built at <a href="http://www.bitmakerlabs.com">Bitmaker Labs</a>
       &nbsp;&nbsp;<%= image_tag 'crowdtiltcircle.png' %>&nbsp;&nbsp;
       Powered by <a href="http://www.crowdtilt.com">Crowdtilt</a>
       </a>
-    </div>
+      <div id="footercontact">
+      <a href="mailto:hello@devocracy.org">Contact Us</a> || <a href="https://github.com/estiens/Crowdhoster">Github</a> 
+    <div>
 
+    </div>
+    
   </body>
 </html>
+
+<style>
+  #footer-contact{
+    float:right;
+  }
