@@ -81,7 +81,7 @@ path {
 </div>
 <div class='row'>
   <div class="large-8 columns centered">
-    <button class="rubyfilter" class="tiny">ruby</button><button class="jsfilter" class="tiny">javascript</button><button class="pythonfilter">python</button><button class="allfilter" class="tiny">all</button>
+    <button class="rubyfilter" class="tiny" style="margin-right:25px">ruby</button><button class="jsfilter" class="tiny"style="margin-right:25px">javascript</button><button class="pythonfilter"style="margin-right:25px">python</button><button class="allfilter" class="tiny"style="margin-right:25px">all</button>
   </div>
 </div>
 <script>
@@ -139,8 +139,8 @@ g.append("circle")
     .attr("data-city", "<%= camp.city %>")
     .attr("data-num_in_city", <%= Bootcamp.num_in_city(camp.city)  %>)
     .attr("cx", coords[0])
-    .attr("cx", coords[0]+((2-ci)*10))
-    .attr("cy", coords[1]+((2-ci)*5))
+    .attr("cx", coords[0]+((2-ci)*2.5))
+    .attr("cy", coords[1]+((2-ci)*7))
     .attr("r", 3)
     .attr("fill", "orange")
     .attr("stroke", "white")

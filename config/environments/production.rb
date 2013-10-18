@@ -22,6 +22,18 @@ Crowdhoster::Application.configure do
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
+#CHECKING ACTION MAILER
+
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            'devocracyorg@gmail.com',
+  password:             'o&e&d2013',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
